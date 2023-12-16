@@ -7,6 +7,6 @@ enum class AuthenticationType(val code: String) {
     companion object {
         fun from(code: String): AuthenticationType =
             AuthenticationType.values().firstOrNull { it.code == code }
-                ?: throw IllegalArgumentException("$code is illegal Argument [SocialType]")
+                ?: throw IllegalArgumentException("$code is illegal Argument [AuthenticationType]")
     }
 }

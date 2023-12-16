@@ -10,7 +10,7 @@ interface SocialAuthenticationDao {
 }
 
 @Repository
-interface AuthenticationEntityJpaRepository : JpaRepository<AuthenticationEntity, UUID>
+interface AuthenticationEntityJpaRepository : JpaRepository<AuthenticationEntity, String>
 
 @Repository
 class SocialAuthenticationDaoImpl(

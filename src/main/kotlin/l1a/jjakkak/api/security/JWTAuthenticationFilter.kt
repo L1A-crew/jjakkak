@@ -1,10 +1,10 @@
-package l1a.jjakkak.security
+package l1a.jjakkak.api.security
 
 import com.auth0.jwt.exceptions.TokenExpiredException
 import jakarta.servlet.FilterChain
 import jakarta.servlet.http.HttpServletRequest
 import jakarta.servlet.http.HttpServletResponse
-import l1a.jjakkak.security.SecurityConfig.Companion.AUTHENTICATION_BY_PASS_LIST
+import l1a.jjakkak.api.security.SecurityConfig.Companion.AUTHENTICATION_BY_PASS_LIST
 import org.springframework.security.authentication.InsufficientAuthenticationException
 import org.springframework.security.core.AuthenticationException
 import org.springframework.security.core.context.SecurityContextHolder
@@ -19,7 +19,10 @@ internal class JWTAuthenticationFilter(private val jwtTokenProvider: JwtTokenPro
         response: HttpServletResponse,
         filterChain: FilterChain
     ) {
-        
+        if (AUTHENTICATION_BY_PASS_LIST.any { request.requestURI.contains(it) }) {
+            filterChain.doFilter(request, response)
+            return
+        }
 
         runCatching {
             request.getHeader(HEADER_AUTHENTICATION)?.let { token ->

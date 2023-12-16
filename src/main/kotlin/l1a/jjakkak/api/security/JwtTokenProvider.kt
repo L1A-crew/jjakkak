@@ -1,4 +1,4 @@
-package l1a.jjakkak.security
+package l1a.jjakkak.api.security
 
 import com.auth0.jwt.JWT
 import com.auth0.jwt.algorithms.Algorithm

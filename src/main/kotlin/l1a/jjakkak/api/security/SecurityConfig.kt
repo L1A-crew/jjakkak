@@ -1,4 +1,4 @@
-package l1a.jjakkak.security
+package l1a.jjakkak.api.security
 
 import l1a.jjakkak.api.ApiUrl
 import org.springframework.context.annotation.Bean

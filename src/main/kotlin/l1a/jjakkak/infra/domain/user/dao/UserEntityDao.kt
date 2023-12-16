@@ -16,5 +16,10 @@ interface UserEntityJpaRepository: JpaRepository<UserEntity, UUID>
 internal class UserEntityDaoImpl(
     val delegate: UserEntityJpaRepository
 ): UserEntityDao {
-    override fun save(entity: UserEntity): UserEntity = delegate.save(entity)
+    override fun save(entity: UserEntity): UserEntity = delegate.save(
+        entity
+            .also {
+                val a = it
+                println(a)
+            })
 }
