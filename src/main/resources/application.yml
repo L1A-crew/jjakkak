@@ -27,6 +27,7 @@ lia:
     private-key-path: ${ZZEKAK_PRIVATE_KEY_PATH}
     social-login-app-key: ${KAKAO_APP_KEY}
     social-login-kakao-public-key-url: "https://kauth.kakao.com/.well-known/jwks.json"
+    social-login-apple-public-key-url: "https://appleid.apple.com/auth/keys"
   api-key:
     addr: ${ZZEKAK_ADDR_KEY}
     coord: ${ZZEKAK_COORD_KEY}

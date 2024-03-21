@@ -1,6 +1,5 @@
 package l1a.jjakkak.core.domain.user.usecase
 
-import com.auth0.jwt.JWT
 import com.auth0.jwt.algorithms.Algorithm
 import com.auth0.jwt.exceptions.JWTVerificationException
 import l1a.jjakkak.core.domain.user.AuthToken
@@ -17,14 +16,6 @@ import l1a.jjakkak.core.domain.user.usecase.common.JwtMixin
 import org.springframework.beans.factory.InitializingBean
 import org.springframework.beans.factory.annotation.Value
 import org.springframework.stereotype.Service
-import java.nio.file.Files
-import java.nio.file.Paths
-import java.security.KeyFactory
-import java.security.interfaces.RSAPrivateKey
-import java.security.interfaces.RSAPublicKey
-import java.security.spec.PKCS8EncodedKeySpec
-import java.security.spec.X509EncodedKeySpec
-import java.time.Instant
 import java.util.*
 
 @Service
@@ -49,14 +40,10 @@ internal class JoinOrLoginUseCase(
 
         val decodedToken = type.decode(token)
 
-        val selectedPublicKeyInfo =
-            authRepo.getKakaoLoginPublicKey().find { it.kid == decodedToken.header.kid }
-                ?: throw JWTVerificationException("Not Found Kakao PublicKeyInfo")
-
         type.validate(
             token = token,
             appKey = appKey,
-            rsaPublicKeyInfo = selectedPublicKeyInfo
+            rsaPublicKeyInfo = type.getRSAPublicKeyInfo(decodedToken)
         )
 
         val user = userRepo
@@ -79,4 +66,12 @@ internal class JoinOrLoginUseCase(
                 type = type
             )
         )
+
+    private fun AuthenticationType.getRSAPublicKeyInfo(authToken: AuthToken): AuthRepository.RSAPublicKeyInfo =
+        when (this) {
+            AuthenticationType.KAKAO -> authRepo.getKakaoLoginPublicKey()
+            AuthenticationType.APPLE -> authRepo.getAppleLoginPublicKey()
+        }
+            .find { it.kid == authToken.header.kid }
+            ?: throw JWTVerificationException("Not Found Kakao PublicKeyInfo")
 }
