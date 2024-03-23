@@ -3,12 +3,9 @@ package l1a.jjakkak.infra.domain.address.repository
 import kotlinx.serialization.json.*
 import l1a.jjakkak.api.config.exception.ExceptionEnum
 import l1a.jjakkak.api.config.exception.ZzekakException
-import l1a.jjakkak.core.domain.address.Address
-import l1a.jjakkak.core.domain.address.Coordinate
-import l1a.jjakkak.core.domain.address.SearchedAddress
+import l1a.jjakkak.core.domain.address.model.AdditionalAddressInfo
+import l1a.jjakkak.core.domain.address.model.SearchedAddress
 import l1a.jjakkak.infra.domain.address.model.*
-import org.springframework.beans.factory.annotation.Value
-import org.springframework.http.HttpStatus
 import org.springframework.http.MediaType
 import org.springframework.web.reactive.function.client.WebClient
 import org.springframework.web.util.DefaultUriBuilderFactory
@@ -35,9 +32,9 @@ internal class ConnectionModule(val confmKey: String) {
         return addrList
     }
 
-    fun searchCoordinate(aObj: AddressObject): CoordinateResponse {
+    fun searchCoordinate(aObj: AdditionalAddressInfo): CoordinateResponse {
         val srchRslt = connectionCoordinate(aObj)
-        var result: CoordinateResponse = CoordinateResponse("0.0", "0.0")
+        var result = CoordinateResponse("0.0", "0.0")
         srchRslt.results.let { it: Results? ->
             it?.juso!!.forEach { el ->
                 result = CoordinateResponse(el.entX, el.entY)
@@ -57,7 +54,7 @@ internal class ConnectionModule(val confmKey: String) {
     }
 
     //좌표 검색
-    private fun connectionCoordinate(aObj: AddressObject): AddressResponse {
+    private fun connectionCoordinate(aObj: AdditionalAddressInfo): AddressResponse {
         //admCd: String, rnMgtSn: String, udrtYn: String, buldMnnm: String, buldSlno: String
         var req: JsonObject = CoordinateRequest(
             confmKey, aObj.administrativeCode, aObj.roadNameCode, aObj.undergroundIndicator,

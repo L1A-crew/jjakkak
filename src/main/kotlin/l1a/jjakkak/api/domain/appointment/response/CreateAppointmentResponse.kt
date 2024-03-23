@@ -2,8 +2,8 @@ package l1a.jjakkak.api.domain.appointment.response
 
 import com.fasterxml.jackson.annotation.JsonProperty
 import l1a.jjakkak.api.domain.common.response.AddressResponse
-import l1a.jjakkak.core.domain.appointment.AppointmentId
-import l1a.jjakkak.core.domain.appointment.AppointmentQuery
+import l1a.jjakkak.core.domain.appointment.model.AppointmentId
+import l1a.jjakkak.core.domain.appointment.model.AppointmentQuery
 import l1a.jjakkak.core.domain.user.UserId
 import java.time.Instant
 

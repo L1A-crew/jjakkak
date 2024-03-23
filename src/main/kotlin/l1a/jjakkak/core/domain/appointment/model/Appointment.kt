@@ -1,11 +1,8 @@
-package l1a.jjakkak.core.domain.appointment
+package l1a.jjakkak.core.domain.appointment.model
 
-import l1a.jjakkak.core.domain.address.Address
-import l1a.jjakkak.core.domain.address.IdentifierAddress
+import l1a.jjakkak.core.domain.address.model.IdentifierAddress
 import l1a.jjakkak.core.domain.common.IdTypeUUID
-import l1a.jjakkak.core.domain.user.UserCommand
 import l1a.jjakkak.core.domain.user.UserId
-import l1a.jjakkak.core.domain.user.UserQuery
 import java.time.Instant
 import java.util.*
 

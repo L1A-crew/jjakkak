@@ -1,7 +1,6 @@
 package l1a.jjakkak.core.domain.address.usecase
 
-import l1a.jjakkak.core.domain.address.Address
-import l1a.jjakkak.core.domain.address.SearchedAddress
+import l1a.jjakkak.core.domain.address.model.SearchedAddress
 import l1a.jjakkak.core.domain.address.repository.AddressRepository
 import org.springframework.stereotype.Service
 

@@ -13,7 +13,7 @@ import org.springframework.web.bind.annotation.RestController
     produces = [MediaType.APPLICATION_JSON_VALUE]
 )
 internal interface FindAddressController {
-    @GetMapping(ApiUrl.ADDRESS)
+    @GetMapping(ApiUrl.ADDRESS_SEARCH)
     fun findAddress(@RequestParam keyword: String): AddressResponse
 }
 

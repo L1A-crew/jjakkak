@@ -2,11 +2,11 @@ package l1a.jjakkak.api.domain.appointment
 
 import l1a.jjakkak.api.ApiUrl
 import l1a.jjakkak.api.domain.appointment.response.CreateAppointmentResponse
-import l1a.jjakkak.core.domain.address.Address
-import l1a.jjakkak.core.domain.address.AddressId
-import l1a.jjakkak.core.domain.address.IdentifierAddress
-import l1a.jjakkak.core.domain.appointment.AppointmentCommand
-import l1a.jjakkak.core.domain.appointment.AppointmentId
+import l1a.jjakkak.core.domain.address.model.Address
+import l1a.jjakkak.core.domain.address.model.AddressId
+import l1a.jjakkak.core.domain.address.model.IdentifierAddress
+import l1a.jjakkak.core.domain.appointment.model.AppointmentCommand
+import l1a.jjakkak.core.domain.appointment.model.AppointmentId
 import l1a.jjakkak.core.domain.appointment.usecase.CreateAppointmentUseCase
 import l1a.jjakkak.core.domain.user.UserId
 import org.springframework.http.MediaType

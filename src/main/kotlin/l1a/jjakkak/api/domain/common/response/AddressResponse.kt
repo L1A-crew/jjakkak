@@ -1,8 +1,8 @@
 package l1a.jjakkak.api.domain.common.response
 
 import com.fasterxml.jackson.annotation.JsonProperty
-import l1a.jjakkak.core.domain.address.AddressId
-import l1a.jjakkak.core.domain.address.IdentifierAddress
+import l1a.jjakkak.core.domain.address.model.AddressId
+import l1a.jjakkak.core.domain.address.model.IdentifierAddress
 
 data class AddressResponse(
     @JsonProperty("id")

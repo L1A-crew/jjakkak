@@ -1,4 +1,4 @@
-package l1a.jjakkak.core.domain.address
+package l1a.jjakkak.core.domain.address.model
 
 import l1a.jjakkak.core.domain.common.IdTypeUUID
 import java.util.*

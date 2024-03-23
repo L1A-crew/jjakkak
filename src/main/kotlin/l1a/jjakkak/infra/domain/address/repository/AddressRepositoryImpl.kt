@@ -1,12 +1,11 @@
 package l1a.jjakkak.infra.domain.address.repository
 
-import l1a.jjakkak.core.domain.address.Address
-import l1a.jjakkak.core.domain.address.Coordinate
-import l1a.jjakkak.core.domain.address.SearchedAddress
+import l1a.jjakkak.core.domain.address.model.AdditionalAddressInfo
+import l1a.jjakkak.core.domain.address.model.Address
+import l1a.jjakkak.core.domain.address.model.Coordinate
+import l1a.jjakkak.core.domain.address.model.SearchedAddress
 import l1a.jjakkak.core.domain.address.repository.AddressRepository
 import l1a.jjakkak.infra.domain.address.model.AddressObject
-import l1a.jjakkak.infra.domain.address.model.AddressResponse
-import l1a.jjakkak.infra.domain.address.model.CoordinateResponse
 import org.springframework.beans.factory.annotation.Value
 import org.springframework.stereotype.Repository
 
@@ -23,6 +22,6 @@ class AddressRepositoryImpl(
     override fun findAddressByKeyword(keyword: String): List<SearchedAddress> =
         ConnectionModule(aConfmKey).searchAddr(keyword)
 
-    override fun findCoordinateByAddressInfo(addrObj: AddressObject): Coordinate =
+    override fun findCoordinateByAddressInfo(addrObj: AdditionalAddressInfo): Coordinate =
         ConnectionModule(cConfmKey).searchCoordinate(addrObj)
 }

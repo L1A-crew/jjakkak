@@ -1,8 +1,7 @@
 package l1a.jjakkak.api.domain.address.response
 
 import com.fasterxml.jackson.annotation.JsonProperty
-import l1a.jjakkak.core.domain.address.Address
-import l1a.jjakkak.core.domain.address.SearchedAddress
+import l1a.jjakkak.core.domain.address.model.SearchedAddress
 
 internal data class SearchedAddressContent(
     @JsonProperty("cityOrProvince")

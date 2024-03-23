@@ -16,4 +16,8 @@ object ApiUrl {
 
     // address
     const val ADDRESS = "/address"
+    const val ADDRESS_SEARCH = "$ADDRESS/search"
+
+    private const val ADDRESS_COORDINATE = "$ADDRESS/coordinate"
+    const val ADDRESS_COORDINATE_SEARCH = "$ADDRESS_COORDINATE/search"
 }
