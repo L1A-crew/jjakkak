@@ -2,6 +2,7 @@ package l1a.jjakkak.infra.domain.address.model
 
 import com.fasterxml.jackson.annotation.JsonProperty
 import l1a.jjakkak.core.domain.address.Address
+import l1a.jjakkak.core.domain.address.SearchedAddress
 
 
 internal data class AddressResponse(
@@ -56,9 +57,9 @@ data class AddressObject (
     override val postalCode: String,
     override val jibunAddress: String,
     override val roadAddress: String,
-    val admCd: String,          //행정구역코드
-    val rnMgtSn: String,        //도로명 코드
-    val udrtYn: String,         //지하 여부. 0: 지상, 1: 지하
-    val buldMnnm: String,       //건물 본번
-    val buldSlno: String,       //건물 부번
-) : Address
+    override val administrativeCode: String,
+    override val roadNameCode: String,
+    override val undergroundIndicator: String,
+    override val buildingMainNumber: String,
+    override val buildingSubNumber: String,
+    ) : SearchedAddress

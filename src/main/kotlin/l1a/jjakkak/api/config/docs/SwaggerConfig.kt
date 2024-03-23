@@ -33,6 +33,14 @@ class SwaggerConfig {
             .build()
    
     @Bean
+    fun addressApi(): GroupedOpenApi =
+        GroupedOpenApi.builder()
+            .group("Address API")
+            .pathsToMatch("${ApiUrl.ADDRESS}/**")
+            .addOpenApiCustomizer(openApiCustomizer())
+            .build()
+
+    @Bean
     fun customOpenAPI(): OpenAPI =
         OpenAPI()
             .info(

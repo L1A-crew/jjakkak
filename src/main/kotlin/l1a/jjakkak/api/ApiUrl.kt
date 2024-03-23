@@ -5,7 +5,6 @@ object ApiUrl {
     const val DOCS = "/docs"
 
     // User
-//    private const val USER = "/user"
     const val USER = "/user"
     const val USER_JOIN_OR_LOGIN = "$USER/joinOrLogin"
     const val USER_WITHDRAWAL = "$USER/withdrawal"
@@ -14,4 +13,7 @@ object ApiUrl {
     // Appointment
     const val APPOINTMENT = "/appointment"
     const val CREATE_APPOINTMENT = "$APPOINTMENT/create"
+
+    // address
+    const val ADDRESS = "/address"
 }

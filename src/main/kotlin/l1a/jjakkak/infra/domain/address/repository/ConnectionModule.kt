@@ -5,6 +5,7 @@ import l1a.jjakkak.api.config.exception.ExceptionEnum
 import l1a.jjakkak.api.config.exception.ZzekakException
 import l1a.jjakkak.core.domain.address.Address
 import l1a.jjakkak.core.domain.address.Coordinate
+import l1a.jjakkak.core.domain.address.SearchedAddress
 import l1a.jjakkak.infra.domain.address.model.*
 import org.springframework.beans.factory.annotation.Value
 import org.springframework.http.HttpStatus
@@ -18,19 +19,22 @@ internal class ConnectionModule(val confmKey: String) {
     private val coodrUrl = "https://business.juso.go.kr/addrlink/addrCoordApi.do"
     //주소(addr)검색 / 좌표(coord)검색
 
-    fun searchAddr(keyword: String): List<Address>{
-        var addrList: MutableList<Address> = arrayListOf()
+    fun searchAddr(keyword: String): List<SearchedAddress> {
+        var addrList: MutableList<SearchedAddress> = arrayListOf()
         val addrRslt = connectionJuso(keyword)
         addrRslt.results.let { it: Results? ->
             it?.juso!!.forEach { el ->
-                val addr: AddressObject = AddressObject(el.siNm, el.sggNm, el.zipNo, el.jibunAddr, el.roadAddrPart1,
-                    el.admCd, el.rnMgtSn, el.udrtYn, el.buldMnnm, el.buldSlno)
+                val addr: AddressObject = AddressObject(
+                    el.siNm, el.sggNm, el.zipNo, el.jibunAddr, el.roadAddrPart1,
+                    el.admCd, el.rnMgtSn, el.udrtYn, el.buldMnnm, el.buldSlno
+                )
                 addrList.add(addr)
             }
 
         }
         return addrList
     }
+
     fun searchCoordinate(aObj: AddressObject): CoordinateResponse {
         val srchRslt = connectionCoordinate(aObj)
         var result: CoordinateResponse = CoordinateResponse("0.0", "0.0")
@@ -42,38 +46,43 @@ internal class ConnectionModule(val confmKey: String) {
         return result
     }
 
-    
+
     //도로명 주소 검색
-    fun connectionJuso(keyword: String
-    ): AddressResponse{
+    private fun connectionJuso(
+        keyword: String
+    ): AddressResponse {
         val req: JsonObject = AddressRequest(keyword, confmKey).returnToJSON()
         val response: AddressResponse = connection(addrUrl, req)
         return response
     }
 
     //좌표 검색
-    fun connectionCoordinate(aObj: AddressObject): AddressResponse{
+    private fun connectionCoordinate(aObj: AddressObject): AddressResponse {
         //admCd: String, rnMgtSn: String, udrtYn: String, buldMnnm: String, buldSlno: String
-        var req: JsonObject = CoordinateRequest(confmKey, aObj.admCd, aObj.rnMgtSn, aObj.udrtYn,
-                                                aObj.buldMnnm, aObj.buldSlno).returnToJSONString()
+        var req: JsonObject = CoordinateRequest(
+            confmKey, aObj.administrativeCode, aObj.roadNameCode, aObj.undergroundIndicator,
+            aObj.buildingMainNumber, aObj.buildingSubNumber
+        ).returnToJSONString()
 
         val response: AddressResponse = connection(coodrUrl, req)
         return response
     }
 
-    fun connection(url: String, req: JsonObject): AddressResponse {
+    private fun connection(url: String, req: JsonObject): AddressResponse {
 
-        val factory = DefaultUriBuilderFactory(url).apply { this.encodingMode = DefaultUriBuilderFactory.EncodingMode.URI_COMPONENT }
+        val factory = DefaultUriBuilderFactory(url).apply {
+            this.encodingMode = DefaultUriBuilderFactory.EncodingMode.URI_COMPONENT
+        }
         val webClient = WebClient.builder()
             .uriBuilderFactory(factory)
             .build()
 
         val response = webClient
             .get()
-            .uri{uriBuilder: UriBuilder ->
+            .uri { uriBuilder: UriBuilder ->
                 var iter = req.keys.iterator()
-                while(iter.hasNext()){
-                    var key =iter.next()
+                while (iter.hasNext()) {
+                    var key = iter.next()
                     uriBuilder.queryParam(key, req.get(key).toString().replace("\"", ""))
                 }
                 uriBuilder.build()
@@ -81,7 +90,7 @@ internal class ConnectionModule(val confmKey: String) {
             .accept(MediaType.APPLICATION_JSON)
             .retrieve()
             .bodyToMono(AddressResponse::class.java)
-            .onErrorMap { e ->
+            .onErrorMap { _ ->
                 throw ZzekakException(ExceptionEnum.SERVER_ERROR)
             }
             .block()
