@@ -49,7 +49,8 @@ internal class SecurityConfig {
             listOf(
                 ApiUrl.USER_JOIN_OR_LOGIN,
                 ApiUrl.USER_TOKEN_REFRESH,
-                "${ApiUrl.DOCS}/**"
+                "${ApiUrl.DOCS}/**",
+                ApiUrl.HEALTH_CHECK
             ).toTypedArray()
     }
 }

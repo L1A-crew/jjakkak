@@ -4,6 +4,9 @@ object ApiUrl {
     // Docs
     const val DOCS = "/docs"
 
+    //HealthCheck
+    const val HEALTH_CHECK = "/healthCheck"
+
     // User
     const val USER = "/user"
     const val USER_JOIN_OR_LOGIN = "$USER/joinOrLogin"
