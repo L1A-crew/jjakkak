@@ -1,6 +1,7 @@
 package l1a.jjakkak.api.domain.address
 
 import io.swagger.v3.oas.annotations.Operation
+import io.swagger.v3.oas.annotations.media.Schema
 import l1a.jjakkak.api.ApiUrl
 import l1a.jjakkak.api.domain.address.response.FindPathResponse
 import l1a.jjakkak.core.domain.address.usecase.PathFindingUseCase
@@ -21,29 +22,37 @@ internal interface PathFindingController {
     @Operation(summary = "길찾기 API- 소요시간 조회", description = "약속시간을 기준으로 그 이전에 도착하는 초단시간을 탐색함. 대중교통 기준.")
     @GetMapping(ApiUrl.PATH_FINDING)
     fun findAddress(
-        @RequestParam(name = "출발지 x좌표") strtLocX: String,
-        @RequestParam(name = "출발지 y좌표") strtLocY: String,
-        @RequestParam(name = "도착지 x좌표") endLocX: String,
-        @RequestParam(name = "도착지 y좌표") endLocY: String,
-        @RequestParam(name = "약속 시간(ZoneDateTime - 2002-06-18T20:30+09:00[Asia/Seoul])") appointmentTime: ZonedDateTime
+        @Schema(description = "출발지 x좌표")
+        @RequestParam(name = "strtLocX") strtLocX: String,
+        @Schema(description = "출발지 y좌표")
+        @RequestParam(name = "strtLocY") strtLocY: String,
+        @Schema(description = "도착지 x좌표")
+        @RequestParam(name = "endLocX") endLocX: String,
+        @Schema(description = "도착지 y좌표")
+        @RequestParam(name = "endLocY") endLocY: String,
+        @Schema(description = "약속 시간(도착시간)")
+        @RequestParam(name = "appointmentTime") appointmentTime: ZonedDateTime
     ): FindPathResponse
 }
+
 @RestController
 internal class PathFindingControllerImpl(
     private val pathFindingUsecase: PathFindingUseCase
 ) : PathFindingController {
     override fun findAddress(
-        strtLocX: String,
-        strtLocY: String,
-        endLocX: String,
-        endLocY: String,
-        appointmentTime: ZonedDateTime
-    ): FindPathResponse
-     = pathFindingUsecase.findPath(
-        strtLocX,
-        strtLocY,
-        endLocX,
-        endLocY,
-        appointmentTime
-     ).run { FindPathResponse.from(this) }
+    strtLocX: String,
+    strtLocY: String,
+    endLocX: String,
+    endLocY: String,
+    appointmentTime: ZonedDateTime
+    ): FindPathResponse =
+        pathFindingUsecase.findPath(
+            strtLocX,
+            strtLocY,
+            endLocX,
+            endLocY,
+            appointmentTime,
+        ).run {
+            FindPathResponse.from(this)
+        }
 }

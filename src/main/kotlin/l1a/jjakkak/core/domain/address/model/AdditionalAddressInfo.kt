@@ -4,9 +4,10 @@ package l1a.jjakkak.core.domain.address.model
  * 좌표 검색을 위한 모델
  */
 interface AdditionalAddressInfo {
-    val jibunAddress: String            // 지번주소
-    val mountainYn: String              // 산 여부
-    val hCode: String                   // 행정동코드
+    val jibunAddress: String// 지번주소
+    val mountainYn: String// 산 여부
+    val hCode: String// 행정동코드
+
     companion object {
         fun create(
             jibunAddress: String,

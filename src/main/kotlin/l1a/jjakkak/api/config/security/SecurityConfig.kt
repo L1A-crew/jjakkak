@@ -49,6 +49,7 @@ internal class SecurityConfig {
                 ApiUrl.USER_TOKEN_REFRESH,
                 "${ApiUrl.DOCS}/**",
                 ApiUrl.HEALTH_CHECK,
+                ApiUrl.EXCEPTION,
             ).toTypedArray()
     }
 }

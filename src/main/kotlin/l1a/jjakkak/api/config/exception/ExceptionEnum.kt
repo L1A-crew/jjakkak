@@ -1,16 +1,12 @@
 package l1a.jjakkak.api.config.exception
 
-import io.swagger.v3.oas.annotations.media.Schema
 import org.springframework.http.HttpStatus
 
 enum class ExceptionEnum(
-    @Schema(name = "code", example = "U-001")
     val code: String,
     val rStatus: HttpStatus,
     val message: String
 ) {
-    TEST("T-001", HttpStatus.CONFLICT, "test"),
-
     // 유저 관련 Erorr => U-...
     ILLEGAL_TOKEN(" U-001", HttpStatus.UNAUTHORIZED, "잘못된 토큰입니다."),
 
