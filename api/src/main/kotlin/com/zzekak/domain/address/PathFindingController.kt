@@ -40,11 +40,11 @@ internal class PathFindingControllerImpl(
     private val pathFindingUsecase: PathFindingUseCase
 ) : PathFindingController {
     override fun findAddress(
-    strtLocX: String,
-    strtLocY: String,
-    endLocX: String,
-    endLocY: String,
-    appointmentTime: ZonedDateTime
+        strtLocX: String,
+        strtLocY: String,
+        endLocX: String,
+        endLocY: String,
+        appointmentTime: ZonedDateTime
     ): FindPathResponse =
         pathFindingUsecase.findPath(
             strtLocX,
