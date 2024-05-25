@@ -32,7 +32,7 @@ lia:
   api-key:
   #  addr: ${ZZEKAK_ADDR_KEY}
   #  coord: ${ZZEKAK_COORD_KEY}
-    google-api-key: ${GOOGLE_API_KEY:}
+    google-api-key: ${GOOGLE_API_KEY}
 
 springdoc:
   api-docs:
