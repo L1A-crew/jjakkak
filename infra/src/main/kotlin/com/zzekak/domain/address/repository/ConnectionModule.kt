@@ -33,13 +33,13 @@ internal class ConnectionModule(val confmKey: String) {
         var response =
             SearchedAddress.create(
                 roadAddress = doc.roadAddress.addressName,
-                jibunAddress = doc.address.addressName,
+                jibunAddress = doc.addressContent.addressName,
                 buildingName = doc.roadAddress.buildingName,
-                mountainYn = doc.address.mountainYn,
+                mountainYn = doc.addressContent.mountainYn,
                 postalCode = doc.roadAddress.zoneNo,
-                hCode = doc.address.hCode,
-                cityOrProvince = doc.address.region1DepthName,
-                districtOrCity = doc.address.region2DepthName,
+                hCode = doc.addressContent.hCode,
+                cityOrProvince = doc.addressContent.region1DepthName,
+                districtOrCity = doc.addressContent.region2DepthName,
                 undergroundYn = doc.roadAddress.undergroundYn,
                 x = doc.x,
                 y = doc.y,

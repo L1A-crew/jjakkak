@@ -9,7 +9,7 @@ internal data class AddressResponse(
 internal data class Documents(
     // 지번주소
     @JsonProperty("address")
-    val address: Address,
+    val addressContent: AddressContent,
     @JsonProperty("address_name")
     val addressName: String,
     @JsonProperty("address_type")
@@ -22,7 +22,7 @@ internal data class Documents(
 )
 
 // 지번주소 object
-internal data class Address(
+internal data class AddressContent(
     @JsonProperty("address_name")
     val addressName: String,
     @JsonProperty("b_code")
