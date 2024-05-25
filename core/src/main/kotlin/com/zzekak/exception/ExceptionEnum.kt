@@ -14,8 +14,6 @@ enum class ExceptionEnum(
     val rStatus: HttpStatus,
     val message: String
 ) {
-    TEST("T-001", HttpStatus.CONFLICT, "test"),
-
     // 유저 관련 Erorr => U-...
     ILLEGAL_TOKEN(" U-001", HttpStatus.UNAUTHORIZED, "잘못된 토큰입니다."),
 

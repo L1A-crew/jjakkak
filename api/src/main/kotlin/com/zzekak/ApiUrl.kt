@@ -25,4 +25,7 @@ object ApiUrl {
     // path finding
     const val PATH = "/path"
     const val PATH_FINDING = "$PATH/find"
+
+    // Exception
+    const val EXCEPTION = "/exception"
 }

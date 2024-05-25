@@ -10,8 +10,6 @@ enum class ExceptionEnumDto(
     val rStatus: HttpStatus,
     val message: String
 ) {
-    TEST("T-001", HttpStatus.CONFLICT, "test"),
-
     // 유저 관련 Erorr => U-...
     ILLEGAL_TOKEN(" U-001", HttpStatus.UNAUTHORIZED, "잘못된 토큰입니다."),
 
@@ -22,7 +20,6 @@ enum class ExceptionEnumDto(
 
     fun toDomain(): ExceptionEnum =
         when (this) {
-            TEST -> ExceptionEnum.TEST
             ILLEGAL_TOKEN -> ExceptionEnum.ILLEGAL_TOKEN
             NO_EXIST_USER -> ExceptionEnum.NO_EXIST_USER
             SERVER_ERROR -> ExceptionEnum.SERVER_ERROR
