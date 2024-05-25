@@ -4,6 +4,7 @@ import com.zzekak.ApiUrl
 import com.zzekak.domain.address.response.FindPathResponse
 import com.zzekak.domain.address.usecase.PathFindingUseCase
 import io.swagger.v3.oas.annotations.Operation
+import io.swagger.v3.oas.annotations.media.Schema
 import org.springframework.http.MediaType
 import org.springframework.web.bind.annotation.GetMapping
 import org.springframework.web.bind.annotation.RequestMapping
