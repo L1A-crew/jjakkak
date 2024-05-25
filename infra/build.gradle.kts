@@ -21,3 +21,17 @@ dependencies {
     implementation("org.mariadb.jdbc:mariadb-java-client:3.1.4")
     runtimeOnly("org.mariadb.jdbc:mariadb-java-client")
 }
+
+tasks.withType<org.springframework.boot.gradle.tasks.bundling.BootJar> {
+    mainClass.set("com.zzekak.ZzekakApplication")
+}
+
+tasks.withType<org.springframework.boot.gradle.tasks.run.BootRun> {
+    mainClass.set("com.zzekak.ZzekakApplication")
+}
+
+tasks.withType<Jar> {
+    manifest {
+        attributes["Main-Class"] = "com.zzekak.ZzekakApplication"
+    }
+}

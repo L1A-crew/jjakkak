@@ -17,3 +17,17 @@ dependencies {
     testImplementation("io.kotest:kotest-assertions-core:5.8.1")
     testImplementation("org.mockito.kotlin:mockito-kotlin:5.3.1")
 }
+
+tasks.withType<org.springframework.boot.gradle.tasks.bundling.BootJar> {
+    mainClass.set("com.zzekak.ZzekakApplication")
+}
+
+tasks.withType<org.springframework.boot.gradle.tasks.run.BootRun> {
+    mainClass.set("com.zzekak.ZzekakApplication")
+}
+
+tasks.withType<Jar> {
+    manifest {
+        attributes["Main-Class"] = "com.zzekak.ZzekakApplication"
+    }
+}
