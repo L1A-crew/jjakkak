@@ -2,6 +2,7 @@ plugins {
     kotlin("jvm")
     kotlin("plugin.jpa")
     id("org.springframework.boot")
+    kotlin("plugin.serialization") version "1.9.21"
 }
 
 dependencies {
