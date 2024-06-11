@@ -56,4 +56,18 @@ subprojects {
     repositories {
         mavenCentral()
     }
+
+    tasks.withType<org.springframework.boot.gradle.tasks.bundling.BootJar> {
+        mainClass.set("com.zzekak.ZzekakApplication")
+    }
+
+    tasks.withType<org.springframework.boot.gradle.tasks.run.BootRun> {
+        mainClass.set("com.zzekak.ZzekakApplication")
+    }
+
+    tasks.withType<Jar> {
+        manifest {
+            attributes["Main-Class"] = "com.zzekak.ZzekakApplication"
+        }
+    }
 }
