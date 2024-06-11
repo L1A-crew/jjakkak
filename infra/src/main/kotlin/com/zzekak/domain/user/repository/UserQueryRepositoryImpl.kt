@@ -1,11 +1,11 @@
 package com.zzekak.infra.domain.user.repository
 
-import com.zzekak.core.domain.user.Agreement
-import com.zzekak.core.domain.user.AuthenticationId
-import com.zzekak.core.domain.user.AuthenticationQuery
-import com.zzekak.core.domain.user.UserId
-import com.zzekak.core.domain.user.UserQuery
-import com.zzekak.core.domain.user.repository.UserQueryRepository
+import com.zzekak.domain.user.Agreement
+import com.zzekak.domain.user.AuthenticationId
+import com.zzekak.domain.user.AuthenticationQuery
+import com.zzekak.domain.user.UserId
+import com.zzekak.domain.user.UserQuery
+import com.zzekak.domain.user.repository.UserQueryRepository
 import com.zzekak.infra.domain.user.dao.UserEntityDao
 import com.zzekak.infra.domain.user.entity.AuthenticationEntity
 import com.zzekak.infra.domain.user.entity.UserEntity

@@ -1,8 +1,8 @@
-package com.zzekak.core.domain.user.repository
+package com.zzekak.domain.user.repository
 
-import com.zzekak.core.domain.user.AuthenticationId
-import com.zzekak.core.domain.user.UserId
-import com.zzekak.core.domain.user.UserQuery
+import com.zzekak.domain.user.AuthenticationId
+import com.zzekak.domain.user.UserId
+import com.zzekak.domain.user.UserQuery
 import java.util.UUID
 
 interface UserQueryRepository {

@@ -1,4 +1,4 @@
-package com.zzekak.core.domain.address.model
+package com.zzekak.domain.address.model
 
 interface Coordinate {
     val x: String

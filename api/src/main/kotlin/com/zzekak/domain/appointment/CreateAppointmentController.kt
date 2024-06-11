@@ -1,14 +1,14 @@
 package com.zzekak.domain.appointment
 
 import com.zzekak.ApiUrl
-import com.zzekak.core.domain.appointment.model.AppointmentCommand
-import com.zzekak.core.domain.appointment.model.AppointmentId
-import com.zzekak.core.domain.appointment.usecase.CreateAppointmentUseCase
-import com.zzekak.core.domain.user.UserId
 import com.zzekak.domain.address.model.AppointmentAddress
 import com.zzekak.domain.address.model.AppointmentAddressId
+import com.zzekak.domain.appointment.model.AppointmentCommand
+import com.zzekak.domain.appointment.model.AppointmentId
 import com.zzekak.domain.appointment.request.CreateAppointmentRequest
 import com.zzekak.domain.appointment.response.CreateAppointmentResponse
+import com.zzekak.domain.appointment.usecase.CreateAppointmentUseCase
+import com.zzekak.domain.user.UserId
 import org.springframework.http.MediaType
 import org.springframework.security.core.annotation.AuthenticationPrincipal
 import org.springframework.web.bind.annotation.PostMapping

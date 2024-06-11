@@ -1,7 +1,7 @@
 package com.zzekak.infra.domain.appointment.dao
 
-import com.zzekak.core.domain.appointment.model.AppointmentId
-import com.zzekak.core.domain.user.UserId
+import com.zzekak.domain.appointment.model.AppointmentId
+import com.zzekak.domain.user.UserId
 import com.zzekak.infra.domain.appointment.entity.AppointmentEntity
 import org.springframework.data.jpa.repository.JpaRepository
 import org.springframework.stereotype.Repository

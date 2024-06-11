@@ -1,8 +1,8 @@
 package com.zzekak.domain.user.usecase
 
-import com.zzekak.core.domain.user.WithdrawalResult
-import com.zzekak.core.domain.user.message.WithdrawalMessage
-import com.zzekak.core.domain.user.repository.UserCommandRepository
+import com.zzekak.domain.user.WithdrawalResult
+import com.zzekak.domain.user.message.WithdrawalMessage
+import com.zzekak.domain.user.repository.UserCommandRepository
 import com.zzekak.exception.ExceptionEnum
 import com.zzekak.exception.ZzekakException
 import org.springframework.stereotype.Service

@@ -1,8 +1,8 @@
-package com.zzekak.core.domain.appointment.usecase
+package com.zzekak.domain.appointment.usecase
 
-import com.zzekak.core.domain.appointment.model.AppointmentQuery
-import com.zzekak.core.domain.appointment.repository.AppointmentRepository
-import com.zzekak.core.domain.user.UserId
+import com.zzekak.domain.appointment.model.AppointmentQuery
+import com.zzekak.domain.appointment.repository.AppointmentRepository
+import com.zzekak.domain.user.UserId
 import org.springframework.stereotype.Service
 
 @Service

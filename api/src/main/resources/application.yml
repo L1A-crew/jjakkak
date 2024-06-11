@@ -13,6 +13,8 @@ spring:
         format_sql: true
         show_sql: true
     open-in-view: false
+  jackson:
+    property-naming-strategy: SNAKE_CASE
 logging:
   charset:
     console: UTF-8

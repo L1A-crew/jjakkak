@@ -1,4 +1,4 @@
-package com.zzekak.core.domain.user.usecase.common
+package com.zzekak.domain.user.usecase.common
 
 import com.auth0.jwt.JWT
 import com.auth0.jwt.algorithms.Algorithm

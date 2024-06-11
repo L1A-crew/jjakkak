@@ -1,8 +1,8 @@
-package com.zzekak.core.domain.appointment.model
+package com.zzekak.domain.appointment.model
 
-import com.zzekak.core.domain.common.IdTypeUUID
-import com.zzekak.core.domain.user.UserId
 import com.zzekak.domain.address.model.AppointmentAddress
+import com.zzekak.domain.common.IdTypeUUID
+import com.zzekak.domain.user.UserId
 import java.time.Instant
 import java.util.UUID
 

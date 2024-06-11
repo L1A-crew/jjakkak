@@ -1,8 +1,8 @@
 package com.zzekak.infra.domain.user.entity
 
-import com.zzekak.core.domain.user.Agreement
-import com.zzekak.core.domain.user.UserCommand
-import com.zzekak.core.domain.user.UserId
+import com.zzekak.domain.user.Agreement
+import com.zzekak.domain.user.UserCommand
+import com.zzekak.domain.user.UserId
 import com.zzekak.infra.domain.common.entity.AuditableBase
 import com.zzekak.infra.domain.user.entity.UserEntity.Companion.TABLE_USER
 import jakarta.persistence.CascadeType

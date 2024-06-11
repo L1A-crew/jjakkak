@@ -1,7 +1,6 @@
-package com.zzekak.core.domain.user
+package com.zzekak.domain.user
 
-import com.zzekak.core.domain.common.IdTypeString
-import com.zzekak.domain.user.AuthenticationType
+import com.zzekak.domain.common.IdTypeString
 import java.time.Instant
 
 @JvmInline

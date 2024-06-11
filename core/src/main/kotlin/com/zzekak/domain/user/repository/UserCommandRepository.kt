@@ -1,7 +1,7 @@
-package com.zzekak.core.domain.user.repository
+package com.zzekak.domain.user.repository
 
-import com.zzekak.core.domain.user.UserCommand
-import com.zzekak.core.domain.user.UserId
+import com.zzekak.domain.user.UserCommand
+import com.zzekak.domain.user.UserId
 
 interface UserCommandRepository {
     fun save(user: UserCommand): UserCommand

@@ -4,8 +4,7 @@ import com.auth0.jwt.JWT
 import com.auth0.jwt.algorithms.Algorithm
 import com.fasterxml.jackson.annotation.JsonValue
 import com.fasterxml.jackson.module.kotlin.readValue
-import com.zzekak.core.domain.user.AuthToken
-import com.zzekak.core.domain.user.repository.AuthRepository
+import com.zzekak.domain.user.repository.AuthRepository
 import com.zzekak.util.ObjectMapper.objectMapper
 import java.math.BigInteger
 import java.security.KeyFactory

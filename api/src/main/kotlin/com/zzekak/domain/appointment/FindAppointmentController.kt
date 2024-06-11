@@ -1,9 +1,9 @@
 package com.zzekak.domain.appointment
 
 import com.zzekak.ApiUrl
-import com.zzekak.core.domain.appointment.usecase.FindAppointmentUseCase
-import com.zzekak.core.domain.user.UserId
 import com.zzekak.domain.appointment.response.FindAppointmentResponse
+import com.zzekak.domain.appointment.usecase.FindAppointmentUseCase
+import com.zzekak.domain.user.UserId
 import org.springframework.http.MediaType
 import org.springframework.security.core.annotation.AuthenticationPrincipal
 import org.springframework.web.bind.annotation.GetMapping

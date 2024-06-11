@@ -1,6 +1,6 @@
 package com.zzekak.domain.address.model
 
-import com.zzekak.core.domain.common.IdTypeUUID
+import com.zzekak.domain.common.IdTypeUUID
 import java.util.UUID
 
 @JvmInline

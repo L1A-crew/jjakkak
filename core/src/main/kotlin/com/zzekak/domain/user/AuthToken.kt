@@ -1,4 +1,4 @@
-package com.zzekak.core.domain.user
+package com.zzekak.domain.user
 
 import com.auth0.jwt.exceptions.TokenExpiredException
 import java.time.Instant

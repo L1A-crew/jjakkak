@@ -1,4 +1,4 @@
-package com.zzekak.core.domain.user
+package com.zzekak.domain.user
 
 data class Token(
     val accessToken: String,

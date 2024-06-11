@@ -1,0 +1,708 @@
+<html><head><meta content="text/html; charset=utf-8" http-equiv="Content-Type"/><title>HELLO, WE ARE TEAM ‘L1A’</title><style>
+/* cspell:disable-file */
+/* webkit printing magic: print all background colors */
+html {
+	-webkit-print-color-adjust: exact;
+}
+* {
+	box-sizing: border-box;
+	-webkit-print-color-adjust: exact;
+}
+
+html,
+body {
+	margin: 0;
+	padding: 0;
+}
+@media only screen {
+	body {
+		margin: 2em auto;
+		max-width: 900px;
+		color: rgb(55, 53, 47);
+	}
+}
+
+body {
+	line-height: 1.5;
+	white-space: pre-wrap;
+}
+
+a,
+a.visited {
+	color: inherit;
+	text-decoration: underline;
+}
+
+.pdf-relative-link-path {
+	font-size: 80%;
+	color: #444;
+}
+
+h1,
+h2,
+h3 {
+	letter-spacing: -0.01em;
+	line-height: 1.2;
+	font-weight: 600;
+	margin-bottom: 0;
+}
+
+.page-title {
+	font-size: 2.5rem;
+	font-weight: 700;
+	margin-top: 0;
+	margin-bottom: 0.75em;
+}
+
+h1 {
+	font-size: 1.875rem;
+	margin-top: 1.875rem;
+}
+
+h2 {
+	font-size: 1.5rem;
+	margin-top: 1.5rem;
+}
+
+h3 {
+	font-size: 1.25rem;
+	margin-top: 1.25rem;
+}
+
+.source {
+	border: 1px solid #ddd;
+	border-radius: 3px;
+	padding: 1.5em;
+	word-break: break-all;
+}
+
+.callout {
+	border-radius: 3px;
+	padding: 1rem;
+}
+
+figure {
+	margin: 1.25em 0;
+	page-break-inside: avoid;
+}
+
+figcaption {
+	opacity: 0.5;
+	font-size: 85%;
+	margin-top: 0.5em;
+}
+
+mark {
+	background-color: transparent;
+}
+
+.indented {
+	padding-left: 1.5em;
+}
+
+hr {
+	background: transparent;
+	display: block;
+	width: 100%;
+	height: 1px;
+	visibility: visible;
+	border: none;
+	border-bottom: 1px solid rgba(55, 53, 47, 0.09);
+}
+
+img {
+	max-width: 100%;
+}
+
+@media only print {
+	img {
+		max-height: 100vh;
+		object-fit: contain;
+	}
+}
+
+@page {
+	margin: 1in;
+}
+
+.collection-content {
+	font-size: 0.875rem;
+}
+
+.column-list {
+	display: flex;
+	justify-content: space-between;
+}
+
+.column {
+	padding: 0 1em;
+}
+
+.column:first-child {
+	padding-left: 0;
+}
+
+.column:last-child {
+	padding-right: 0;
+}
+
+.table_of_contents-item {
+	display: block;
+	font-size: 0.875rem;
+	line-height: 1.3;
+	padding: 0.125rem;
+}
+
+.table_of_contents-indent-1 {
+	margin-left: 1.5rem;
+}
+
+.table_of_contents-indent-2 {
+	margin-left: 3rem;
+}
+
+.table_of_contents-indent-3 {
+	margin-left: 4.5rem;
+}
+
+.table_of_contents-link {
+	text-decoration: none;
+	opacity: 0.7;
+	border-bottom: 1px solid rgba(55, 53, 47, 0.18);
+}
+
+table,
+th,
+td {
+	border: 1px solid rgba(55, 53, 47, 0.09);
+	border-collapse: collapse;
+}
+
+table {
+	border-left: none;
+	border-right: none;
+}
+
+th,
+td {
+	font-weight: normal;
+	padding: 0.25em 0.5em;
+	line-height: 1.5;
+	min-height: 1.5em;
+	text-align: left;
+}
+
+th {
+	color: rgba(55, 53, 47, 0.6);
+}
+
+ol,
+ul {
+	margin: 0;
+	margin-block-start: 0.6em;
+	margin-block-end: 0.6em;
+}
+
+li > ol:first-child,
+li > ul:first-child {
+	margin-block-start: 0.6em;
+}
+
+ul > li {
+	list-style: disc;
+}
+
+ul.to-do-list {
+	padding-inline-start: 0;
+}
+
+ul.to-do-list > li {
+	list-style: none;
+}
+
+.to-do-children-checked {
+	text-decoration: line-through;
+	opacity: 0.375;
+}
+
+ul.toggle > li {
+	list-style: none;
+}
+
+ul {
+	padding-inline-start: 1.7em;
+}
+
+ul > li {
+	padding-left: 0.1em;
+}
+
+ol {
+	padding-inline-start: 1.6em;
+}
+
+ol > li {
+	padding-left: 0.2em;
+}
+
+.mono ol {
+	padding-inline-start: 2em;
+}
+
+.mono ol > li {
+	text-indent: -0.4em;
+}
+
+.toggle {
+	padding-inline-start: 0em;
+	list-style-type: none;
+}
+
+/* Indent toggle children */
+.toggle > li > details {
+	padding-left: 1.7em;
+}
+
+.toggle > li > details > summary {
+	margin-left: -1.1em;
+}
+
+.selected-value {
+	display: inline-block;
+	padding: 0 0.5em;
+	background: rgba(206, 205, 202, 0.5);
+	border-radius: 3px;
+	margin-right: 0.5em;
+	margin-top: 0.3em;
+	margin-bottom: 0.3em;
+	white-space: nowrap;
+}
+
+.collection-title {
+	display: inline-block;
+	margin-right: 1em;
+}
+
+.page-description {
+    margin-bottom: 2em;
+}
+
+.simple-table {
+	margin-top: 1em;
+	font-size: 0.875rem;
+	empty-cells: show;
+}
+.simple-table td {
+	height: 29px;
+	min-width: 120px;
+}
+
+.simple-table th {
+	height: 29px;
+	min-width: 120px;
+}
+
+.simple-table-header-color {
+	background: rgb(247, 246, 243);
+	color: black;
+}
+.simple-table-header {
+	font-weight: 500;
+}
+
+time {
+	opacity: 0.5;
+}
+
+.icon {
+	display: inline-block;
+	max-width: 1.2em;
+	max-height: 1.2em;
+	text-decoration: none;
+	vertical-align: text-bottom;
+	margin-right: 0.5em;
+}
+
+img.icon {
+	border-radius: 3px;
+}
+
+.user-icon {
+	width: 1.5em;
+	height: 1.5em;
+	border-radius: 100%;
+	margin-right: 0.5rem;
+}
+
+.user-icon-inner {
+	font-size: 0.8em;
+}
+
+.text-icon {
+	border: 1px solid #000;
+	text-align: center;
+}
+
+.page-cover-image {
+	display: block;
+	object-fit: cover;
+	width: 100%;
+	max-height: 30vh;
+}
+
+.page-header-icon {
+	font-size: 3rem;
+	margin-bottom: 1rem;
+}
+
+.page-header-icon-with-cover {
+	margin-top: -0.72em;
+	margin-left: 0.07em;
+}
+
+.page-header-icon img {
+	border-radius: 3px;
+}
+
+.link-to-page {
+	margin: 1em 0;
+	padding: 0;
+	border: none;
+	font-weight: 500;
+}
+
+p > .user {
+	opacity: 0.5;
+}
+
+td > .user,
+td > time {
+	white-space: nowrap;
+}
+
+input[type="checkbox"] {
+	transform: scale(1.5);
+	margin-right: 0.6em;
+	vertical-align: middle;
+}
+
+p {
+	margin-top: 0.5em;
+	margin-bottom: 0.5em;
+}
+
+.image {
+	border: none;
+	margin: 1.5em 0;
+	padding: 0;
+	border-radius: 0;
+	text-align: center;
+}
+
+.code,
+code {
+	background: rgba(135, 131, 120, 0.15);
+	border-radius: 3px;
+	padding: 0.2em 0.4em;
+	border-radius: 3px;
+	font-size: 85%;
+	tab-size: 2;
+}
+
+code {
+	color: #eb5757;
+}
+
+.code {
+	padding: 1.5em 1em;
+}
+
+.code-wrap {
+	white-space: pre-wrap;
+	word-break: break-all;
+}
+
+.code > code {
+	background: none;
+	padding: 0;
+	font-size: 100%;
+	color: inherit;
+}
+
+blockquote {
+	font-size: 1.25em;
+	margin: 1em 0;
+	padding-left: 1em;
+	border-left: 3px solid rgb(55, 53, 47);
+}
+
+.bookmark {
+	text-decoration: none;
+	max-height: 8em;
+	padding: 0;
+	display: flex;
+	width: 100%;
+	align-items: stretch;
+}
+
+.bookmark-title {
+	font-size: 0.85em;
+	overflow: hidden;
+	text-overflow: ellipsis;
+	height: 1.75em;
+	white-space: nowrap;
+}
+
+.bookmark-text {
+	display: flex;
+	flex-direction: column;
+}
+
+.bookmark-info {
+	flex: 4 1 180px;
+	padding: 12px 14px 14px;
+	display: flex;
+	flex-direction: column;
+	justify-content: space-between;
+}
+
+.bookmark-image {
+	width: 33%;
+	flex: 1 1 180px;
+	display: block;
+	position: relative;
+	object-fit: cover;
+	border-radius: 1px;
+}
+
+.bookmark-description {
+	color: rgba(55, 53, 47, 0.6);
+	font-size: 0.75em;
+	overflow: hidden;
+	max-height: 4.5em;
+	word-break: break-word;
+}
+
+.bookmark-href {
+	font-size: 0.75em;
+	margin-top: 0.25em;
+}
+
+.sans { font-family: ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, "Apple Color Emoji", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol"; }
+.code { font-family: "SFMono-Regular", Menlo, Consolas, "PT Mono", "Liberation Mono", Courier, monospace; }
+.serif { font-family: Lyon-Text, Georgia, ui-serif, serif; }
+.mono { font-family: iawriter-mono, Nitti, Menlo, Courier, monospace; }
+.pdf .sans { font-family: Inter, ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, "Apple Color Emoji", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol", 'Twemoji', 'Noto Color Emoji', 'Noto Sans CJK JP'; }
+.pdf:lang(zh-CN) .sans { font-family: Inter, ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, "Apple Color Emoji", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol", 'Twemoji', 'Noto Color Emoji', 'Noto Sans CJK SC'; }
+.pdf:lang(zh-TW) .sans { font-family: Inter, ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, "Apple Color Emoji", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol", 'Twemoji', 'Noto Color Emoji', 'Noto Sans CJK TC'; }
+.pdf:lang(ko-KR) .sans { font-family: Inter, ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, "Apple Color Emoji", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol", 'Twemoji', 'Noto Color Emoji', 'Noto Sans CJK KR'; }
+.pdf .code { font-family: Source Code Pro, "SFMono-Regular", Menlo, Consolas, "PT Mono", "Liberation Mono", Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK JP'; }
+.pdf:lang(zh-CN) .code { font-family: Source Code Pro, "SFMono-Regular", Menlo, Consolas, "PT Mono", "Liberation Mono", Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK SC'; }
+.pdf:lang(zh-TW) .code { font-family: Source Code Pro, "SFMono-Regular", Menlo, Consolas, "PT Mono", "Liberation Mono", Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK TC'; }
+.pdf:lang(ko-KR) .code { font-family: Source Code Pro, "SFMono-Regular", Menlo, Consolas, "PT Mono", "Liberation Mono", Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK KR'; }
+.pdf .serif { font-family: PT Serif, Lyon-Text, Georgia, ui-serif, serif, 'Twemoji', 'Noto Color Emoji', 'Noto Serif CJK JP'; }
+.pdf:lang(zh-CN) .serif { font-family: PT Serif, Lyon-Text, Georgia, ui-serif, serif, 'Twemoji', 'Noto Color Emoji', 'Noto Serif CJK SC'; }
+.pdf:lang(zh-TW) .serif { font-family: PT Serif, Lyon-Text, Georgia, ui-serif, serif, 'Twemoji', 'Noto Color Emoji', 'Noto Serif CJK TC'; }
+.pdf:lang(ko-KR) .serif { font-family: PT Serif, Lyon-Text, Georgia, ui-serif, serif, 'Twemoji', 'Noto Color Emoji', 'Noto Serif CJK KR'; }
+.pdf .mono { font-family: PT Mono, iawriter-mono, Nitti, Menlo, Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK JP'; }
+.pdf:lang(zh-CN) .mono { font-family: PT Mono, iawriter-mono, Nitti, Menlo, Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK SC'; }
+.pdf:lang(zh-TW) .mono { font-family: PT Mono, iawriter-mono, Nitti, Menlo, Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK TC'; }
+.pdf:lang(ko-KR) .mono { font-family: PT Mono, iawriter-mono, Nitti, Menlo, Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK KR'; }
+.highlight-default {
+	color: rgba(55, 53, 47, 1);
+}
+.highlight-gray {
+	color: rgba(120, 119, 116, 1);
+	fill: rgba(120, 119, 116, 1);
+}
+.highlight-brown {
+	color: rgba(159, 107, 83, 1);
+	fill: rgba(159, 107, 83, 1);
+}
+.highlight-orange {
+	color: rgba(217, 115, 13, 1);
+	fill: rgba(217, 115, 13, 1);
+}
+.highlight-yellow {
+	color: rgba(203, 145, 47, 1);
+	fill: rgba(203, 145, 47, 1);
+}
+.highlight-teal {
+	color: rgba(68, 131, 97, 1);
+	fill: rgba(68, 131, 97, 1);
+}
+.highlight-blue {
+	color: rgba(51, 126, 169, 1);
+	fill: rgba(51, 126, 169, 1);
+}
+.highlight-purple {
+	color: rgba(144, 101, 176, 1);
+	fill: rgba(144, 101, 176, 1);
+}
+.highlight-pink {
+	color: rgba(193, 76, 138, 1);
+	fill: rgba(193, 76, 138, 1);
+}
+.highlight-red {
+	color: rgba(212, 76, 71, 1);
+	fill: rgba(212, 76, 71, 1);
+}
+.highlight-gray_background {
+	background: rgba(241, 241, 239, 1);
+}
+.highlight-brown_background {
+	background: rgba(244, 238, 238, 1);
+}
+.highlight-orange_background {
+	background: rgba(251, 236, 221, 1);
+}
+.highlight-yellow_background {
+	background: rgba(251, 243, 219, 1);
+}
+.highlight-teal_background {
+	background: rgba(237, 243, 236, 1);
+}
+.highlight-blue_background {
+	background: rgba(231, 243, 248, 1);
+}
+.highlight-purple_background {
+	background: rgba(244, 240, 247, 0.8);
+}
+.highlight-pink_background {
+	background: rgba(249, 238, 243, 0.8);
+}
+.highlight-red_background {
+	background: rgba(253, 235, 236, 1);
+}
+.block-color-default {
+	color: inherit;
+	fill: inherit;
+}
+.block-color-gray {
+	color: rgba(120, 119, 116, 1);
+	fill: rgba(120, 119, 116, 1);
+}
+.block-color-brown {
+	color: rgba(159, 107, 83, 1);
+	fill: rgba(159, 107, 83, 1);
+}
+.block-color-orange {
+	color: rgba(217, 115, 13, 1);
+	fill: rgba(217, 115, 13, 1);
+}
+.block-color-yellow {
+	color: rgba(203, 145, 47, 1);
+	fill: rgba(203, 145, 47, 1);
+}
+.block-color-teal {
+	color: rgba(68, 131, 97, 1);
+	fill: rgba(68, 131, 97, 1);
+}
+.block-color-blue {
+	color: rgba(51, 126, 169, 1);
+	fill: rgba(51, 126, 169, 1);
+}
+.block-color-purple {
+	color: rgba(144, 101, 176, 1);
+	fill: rgba(144, 101, 176, 1);
+}
+.block-color-pink {
+	color: rgba(193, 76, 138, 1);
+	fill: rgba(193, 76, 138, 1);
+}
+.block-color-red {
+	color: rgba(212, 76, 71, 1);
+	fill: rgba(212, 76, 71, 1);
+}
+.block-color-gray_background {
+	background: rgba(241, 241, 239, 1);
+}
+.block-color-brown_background {
+	background: rgba(244, 238, 238, 1);
+}
+.block-color-orange_background {
+	background: rgba(251, 236, 221, 1);
+}
+.block-color-yellow_background {
+	background: rgba(251, 243, 219, 1);
+}
+.block-color-teal_background {
+	background: rgba(237, 243, 236, 1);
+}
+.block-color-blue_background {
+	background: rgba(231, 243, 248, 1);
+}
+.block-color-purple_background {
+	background: rgba(244, 240, 247, 0.8);
+}
+.block-color-pink_background {
+	background: rgba(249, 238, 243, 0.8);
+}
+.block-color-red_background {
+	background: rgba(253, 235, 236, 1);
+}
+.select-value-color-uiBlue { background-color: rgba(35, 131, 226, .07); }
+.select-value-color-pink { background-color: rgba(245, 224, 233, 1); }
+.select-value-color-purple { background-color: rgba(232, 222, 238, 1); }
+.select-value-color-green { background-color: rgba(219, 237, 219, 1); }
+.select-value-color-gray { background-color: rgba(227, 226, 224, 1); }
+.select-value-color-transparentGray { background-color: rgba(227, 226, 224, 0); }
+.select-value-color-translucentGray { background-color: rgba(255, 255, 255, 0.0375); }
+.select-value-color-orange { background-color: rgba(250, 222, 201, 1); }
+.select-value-color-brown { background-color: rgba(238, 224, 218, 1); }
+.select-value-color-red { background-color: rgba(255, 226, 221, 1); }
+.select-value-color-yellow { background-color: rgba(253, 236, 200, 1); }
+.select-value-color-blue { background-color: rgba(211, 229, 239, 1); }
+.select-value-color-pageGlass { background-color: undefined; }
+.select-value-color-washGlass { background-color: undefined; }
+
+.checkbox {
+	display: inline-flex;
+	vertical-align: text-bottom;
+	width: 16;
+	height: 16;
+	background-size: 16px;
+	margin-left: 2px;
+	margin-right: 5px;
+}
+
+.checkbox-on {
+	background-image: url("data:image/svg+xml;charset=UTF-8,%3Csvg%20width%3D%2216%22%20height%3D%2216%22%20viewBox%3D%220%200%2016%2016%22%20fill%3D%22none%22%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%3E%0A%3Crect%20width%3D%2216%22%20height%3D%2216%22%20fill%3D%22%2358A9D7%22%2F%3E%0A%3Cpath%20d%3D%22M6.71429%2012.2852L14%204.9995L12.7143%203.71436L6.71429%209.71378L3.28571%206.2831L2%207.57092L6.71429%2012.2852Z%22%20fill%3D%22white%22%2F%3E%0A%3C%2Fsvg%3E");
+}
+
+.checkbox-off {
+	background-image: url("data:image/svg+xml;charset=UTF-8,%3Csvg%20width%3D%2216%22%20height%3D%2216%22%20viewBox%3D%220%200%2016%2016%22%20fill%3D%22none%22%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%3E%0A%3Crect%20x%3D%220.75%22%20y%3D%220.75%22%20width%3D%2214.5%22%20height%3D%2214.5%22%20fill%3D%22white%22%20stroke%3D%22%2336352F%22%20stroke-width%3D%221.5%22%2F%3E%0A%3C%2Fsvg%3E");
+}
+
+</style></head><body><article class="page sans" id="3537c6d2-1f3a-40b4-b57c-cafbb4eb77cd"><header><img class="page-cover-image" src="resource/lia_cover.png" style="object-position:center 50%"/><h1 class="page-title">HELLO, WE ARE TEAM ‘<strong>L1A’</strong></h1><p class="page-description"></p></header><div class="page-body"><p class="" id="afc62c15-d86f-4c3e-bf7c-8f6c1b1bffcd">
+</p><h3 class="" id="f1ca88dd-cb19-47c8-bb63-83b116428af4">혼자였다면 버려졌을지 모를 작은 아이디어들,<br/>우리 함께라면 발전시킬 수 있어요.<br/></h3><p class="" id="31b0e5b7-522e-4ee4-b1ea-d3c67c84fa84">
+</p><blockquote class="block-color-default" id="9834bf8d-836b-4823-992f-20c82041afe2"><strong>Little<br/>1deas<br/>Ascend<br/></strong></blockquote><p class="" id="a2f91e03-c9f7-468c-9999-0ce679fdd91a">
+</p><p class="" id="cb75e3cf-db3e-42cf-bf6b-8b52a816a0f1">TEAM L1A는 각기 다른 사람들이 모여 서로의 능력을 더한다면<br/>꼭 세상을 바꾸는 위대한 혁신까지는 아닐지라도<br/>일상에서의 작고 즐거운 변화를 만들 수 있을 거라고 믿습니다.<br/></p><p class="" id="6d19e685-b3d3-431f-b28b-61592a9bf9bb">
+</p><p class="" id="d8722f5a-5dfe-4d37-a90b-c95c8ba23359"><strong>TEAM L1A가 만드는 변화, 함께 하실래요? 🙂</strong></p><p class="" id="544950ff-7f7d-41f7-99fb-b92f98888408">
+</p><h2 class="" id="327be760-2e98-4498-9298-526de3a809fd">작은 회의실에서 시작된 아이디어 💭</h2><hr id="45ecd81a-3e6f-4a9e-8a9f-2d9536ad8dc3"/><div class="column-list" id="c461addc-5d63-436d-84fa-90b9a70a1aa4"><div class="column" id="345b3871-54c5-4ff6-8b94-ae44f6271259" style="width:68.75%"><p class="" id="4b7351fc-138a-4508-8f1d-a3ededbb716c">작은 차고에서 시작된 애플과<br/>기숙사 방에서 시작된 페이스북처럼<br/>우리의 모임도 작은 회의실에서,<br/>작은 아이디어에서 시작되었습니다.<br/><br/></p><p class="" id="e07c376d-e5f9-416e-b8c6-6c432a48a1c1">그럴듯한 아이디어가 떠올랐지만<br/>실행할 엄두가 나지 않아서,<br/>실제로 구현할 능력이 없어서<br/>여러 가지 이유로 미루기만 하진 않으셨나요?<br/><br/>우리는 혼자라면 어려운 일도<br/>함께라면 이뤄낼 수 있다고 믿습니다.<br/></p><p class="" id="ebfa706d-c1ba-4f63-94cb-d7df2bc15581">
+</p></div><div class="column" id="32ed059f-5a55-4293-9793-f3dbeb8966ab" style="width:31.25%"><figure class="image" id="bf4ed6e7-1206-4bb5-b567-28dea1dbc693"><a href="resource/Untitled.png"><img src="resource/Untitled.png" style="width:460px"/></a></figure></div></div><p class="" id="368df3d1-dafa-4b2a-867e-e27aea8b52b3">
+</p><h2 class="" id="6268b5f1-ce5d-4618-b6ce-395a87083c5f">함께 이루고자 하는 목표 🏁</h2><hr id="a2420b0e-55d6-422a-af33-5b466fb598c3"/><p class="" id="a035073e-e454-4d7f-8942-a4be91d5f8e1">
+</p><h3 class="" id="9da7cdfd-d225-4f35-861c-77bec5e71100">1. WHY : 우리가 함께하는 이유</h3><p class="" id="b111090b-057d-4a71-bb3d-ac2f83cc4f13">삶에 의미 있는 결과물을 남기고 싶은 사람들이 모였어요.<br/>단기적인 목표를 위해 달리다 흐지부지 되는 많은 사이드 프로젝트의 형태를 지양하며<br/>장기적으로 반드시 무언가를 남기기 위해 지속 가능한 방식을 고민했어요.<br/></p><p class="" id="28e45c86-6a4b-46f8-b636-6a56b806e4ef">
+</p><h3 class="" id="4c146725-c503-43f8-be69-6986ca84b31e">2. HOW : 결과물을 내기 위해 우리가 택한 방식</h3><figure class="block-color-gray_background callout" id="07cc3d71-9228-4a1f-9119-0f0eb8ba20a8" style="white-space:pre-wrap;display:flex"><div style="font-size:1.5em"><span class="icon">1️⃣</span></div><div style="width:100%"><strong>인간을 관찰하고 공감하며 문제를 정의합니다.</strong> <br/>위대한 혁신을 만드는 것이 아닌 우리 주변을 관찰하며 작은 문제 발견에 집중합니다.<br/></div></figure><figure class="block-color-gray_background callout" id="bfcdcd65-6c0b-41f8-ab2f-2e181fc874c8" style="white-space:pre-wrap;display:flex"><div style="font-size:1.5em"><span class="icon">2️⃣</span></div><div style="width:100%"><strong>문제를 해결할 수 있는 방법을 제시합니다.<br/><br/></strong>문제를 해결할 수 있을 것이라 생각하는 각자의 방법을 스스럼없이 제안하고 결정합니다.</div></figure><figure class="block-color-gray_background callout" id="b186c3b0-252c-4a5d-8f73-ebd319e0c9e6" style="white-space:pre-wrap;display:flex"><div style="font-size:1.5em"><span class="icon">3️⃣</span></div><div style="width:100%"><strong>IT와 함께 문제해결 방법을 프로덕트로 구체화합니다.<br/><br/></strong>문제해결을 위한 모습을 갖춘 프로덕트를 만드는 자원을 추정하고, 모습을 기획합니다.</div></figure><figure class="block-color-gray_background callout" id="0fd7b6bd-7507-4696-8d8b-3666092c90f1" style="white-space:pre-wrap;display:flex"><div style="font-size:1.5em"><span class="icon">4️⃣</span></div><div style="width:100%"><strong>우리가 생각한 문제와 해결을 세상이 원하는 것인지 확인합니다.<br/><br/></strong>서비스의 출시를 세상에 알리고 행동을 관찰하며 우리의 생각을 검증합니다.</div></figure><p class="" id="9970ea49-16bc-49eb-bbd9-673adbd54bf5">
+</p><h3 class="" id="3330a37f-22a5-4a46-9b16-d65b56d06c6c">3. WHAT : 발견한 문제에 대한 우리의 솔루션</h3><figure class="block-color-default callout" id="d909166d-e735-4202-8f36-133734b06088" style="white-space:pre-wrap;display:flex"><div style="font-size:1.5em"><span class="icon">💡</span></div><div style="width:100%"><strong>PROJECT 01</strong><h2 class="" id="35f5f2e2-c95d-4364-ab84-90fc372396b3"><mark class="highlight-blue"><strong>모임 시간 관리 앱 서비스 ‘째깍’</strong></mark></h2><h3 class="" id="d0c7be51-f5c0-4527-b71b-9ac046a9545f">“아끼세요. 시간을, 동료를”</h3><figure class="image" id="cbf44a34-5d97-495f-8b99-4cb9555424ca"><a href="resource/Untitled%201.png"><img src="resource/Untitled%201.png" style="width:624px"/></a></figure><p class="" id="68616bea-9700-4c55-86fe-d875bcf8c8e9">
+</p><p class="" id="ade138dd-38be-4ca5-89fe-a5a41b1d51cc"><strong>[Problem]</strong></p><p class="" id="f748a12f-d56f-4806-8248-5de9f806b0ba">째깍은 모임에서 한 명이라도 지각하게 되면<br/>그로 인해 버려지는 시간<br/>이를 지킬 수 있는 방법을 찾고자 했습니다.<br/></p><p class="" id="dc43fca1-deda-4f52-ac0f-79ee56606087">
+</p><p class="" id="9cfa36b6-772f-494b-90a5-6e6104c169b2"><strong>[Solution]</strong></p><p class="" id="522f69e0-4d05-4c90-a645-d3698760baf8">약속 시간을 지키지 않아서 버려지는 시간을 <br/>지각을 예방하는 가장 좋은 방법은 약속 시간을 지키지 않았을 때<br/>버려지는 시간이 멤버 모두의 시간과 신뢰라는 자산을  <br/>이를 모임 참여자들이 자연스럽게 인지할 수 있도록 하였습니다<br/><mark class="highlight-default">.</mark></p><p class="" id="f52d4708-5005-489b-bb57-73e9c49af312"><br/><br/><code><strong>Brand Mission</strong></code></p><p class="" id="ca64a9d0-4627-4866-8ebe-994dd7cd5db6">째깍의 미션은 상호 존중과 신뢰를 통해<br/>개인과 공동체의 시간을 풍요롭게 만들어가는 것입니다.<br/></p><p class="" id="24d12a4c-da0a-46d7-ad15-a92e63cc5f86"><br/><br/><code><strong>Brand Values</strong></code></p><ul class="bulleted-list" id="9b8703e8-6f22-4f4e-adee-c07c422aa145"><li style="list-style-type:disc"><strong>Punctual Efficiency</strong><br/>모임에서 낭비되는 시간을 제거하여 효율적인 시간 계획 수립이 가능하도록 합니다.<br/></li></ul><ul class="bulleted-list" id="0dc38d21-9c2d-4a15-b0b5-498ee865bf70"><li style="list-style-type:disc"><strong>Cultivated Connection</strong><br/>상호간의 신뢰를 지킴으로써 유대감을 키워갈 수 있도록 합니다.<br/></li></ul><ul class="bulleted-list" id="6531e5d4-ae04-497e-9c5a-e2a7dedee8b6"><li style="list-style-type:disc"><strong>Scheduled Freedom</strong><br/>계획이 지켜지도록 하여 개개인의 스트레스를 줄이고 각자의 일상을 수호합니다.<br/></li></ul><ul class="bulleted-list" id="82d98a77-9482-4b5b-af4c-8d797a3a219c"><li style="list-style-type:disc"><strong>Satisfying Gathering</strong><br/>존중된 약속을 기반으로 함께하여 유익하고 의미있는 모임을 만듭니다.<br/></li></ul><p class="" id="2d4764e6-4a3a-4d69-b885-90390254e393">
+</p><h3 class="" id="71042106-d423-4060-9aac-a9c2e9499c48"><mark class="highlight-blue"><a href="https://www.notion.so/3a84e79395d2493ca91b0933cd3b98c9?pvs=21"><strong>더 알아보기</strong></a></mark><mark class="highlight-blue"><strong> &gt;&gt;</strong></mark></h3></div></figure><figure class="block-color-default callout" id="bef8d7e9-01bc-414e-8bd2-60243ad48eba" style="white-space:pre-wrap;display:flex"><div style="font-size:1.5em"><span class="icon">❔</span></div><div style="width:100%"><strong>PROJECT 02</strong><h3 class="" id="03bebc99-d956-4bfb-8dd3-0dbbd8050407"><mark class="highlight-purple">WHAT’S NEXT?</mark></h3></div></figure><p class="" id="f1cca3c7-14eb-4d7c-8062-315db10d8532">
+</p><h2 class="" id="91fe55d5-38d5-4ced-9294-42993c00b4a9">우리가 협업하는 방식 🧑‍💻</h2><hr id="29fdd9a0-934f-449a-a066-fa24278ef975"/><p class="" id="2bcc3851-c0cb-4428-a56b-308f1e3330d3">과정과 결과를 모두 중시하며, 과정을 통해 성장하고 결과로 인해 성취를 얻고자 노력합니다.</p><p class="" id="8afeaa9e-1cbc-4bc0-a0ef-079b1d78f5d8">
+</p><figure class="image" id="9d31c164-6335-498b-a154-3ec8442d6e34"><a href="resource/charlesdeluvio-Lks7vei-eAg-unsplash.jpg"><img src="resource/charlesdeluvio-Lks7vei-eAg-unsplash.jpg" style="width:708px"/></a></figure><figure class="block-color-default callout" id="752e1bb5-c3f5-43ca-aaa9-f57a1b51ed9b" style="white-space:pre-wrap;display:flex"><div style="font-size:1.5em"><img class="icon" src="resource/L.png"/></div><div style="width:100%"><strong>Learn | 서로에게 배우며 성장합니다</strong><p class="" id="858c8166-982c-4522-b8f7-41569f52ea55">우리는 각자의 분야에서 쌓아온 서로의 전문성을 존중하고<br/>맡은 작업에 대한 결정을 신뢰하며 그 과정에서 배우고 성장합니다.<br/></p></div></figure><figure class="block-color-default callout" id="0801e705-2eb8-4abb-995b-5a8061efc6dd" style="white-space:pre-wrap;display:flex"><div style="font-size:1.5em"><img class="icon" src="resource/I.png"/></div><div style="width:100%"><strong>Innovate | 작은 혁신을 끊임없이 시도합니다.</strong><p class="" id="9350c2e2-5fa6-4728-8a9d-6bebdc24bb72">서로의 아이디어가 ‘nothing’에서 ‘something’이 될 수 있도록<br/>의견을 스스럼없이 나누고 발전시킵니다.<br/></p></div></figure><figure class="block-color-default callout" id="712f498e-f4d9-446b-af30-5a2ab95cba81" style="white-space:pre-wrap;display:flex"><div style="font-size:1.5em"><img class="icon" src="resource/A.png"/></div><div style="width:100%"><strong>Achieve | 끝까지 노력하여 성취를 이룹니다.</strong><p class="" id="c8a4f781-4e49-4aed-90c1-c3e434bb1276">함께하는 시간을 가치있게 여기며,<br/>중도에 포기하지 않고 결과물을 내기 위해 최선을 다합니다.<br/></p></div></figure><p class="" id="355e4cc8-f567-40b3-836b-58644a71a702">
+</p><h2 class="" id="5ecb262d-f899-4a8f-b073-a68e6cb32b3e">서로의 생각에 날개를 달아주는 동료들 🙌</h2><hr id="16734fd4-f2f5-4abe-b418-e287db6e3624"/><p class="" id="b84df3b5-6e29-4bb6-a2de-79377cb63d24">다양한 분야에서 활동 중인 기획자, 개발자, 마케터, 디자이너 등이 함께 하고 있어요.</p><p class="" id="2ce2007e-7b06-4a4d-867a-d548c5d49c9b">
+</p><div class="collection-content" id="9244046b-764d-469a-954f-91040cde5b08"><h4 class="collection-title"></h4><table class="collection-content"><thead><tr><th><span class="icon property-icon"><svg class="typesTitle" role="graphics-symbol" style="width:14px;height:14px;display:block;fill:rgba(55, 53, 47, 0.45);flex-shrink:0" viewBox="0 0 16 16"><path d="M0.637695 13.1914C1.0957 13.1914 1.32812 13 1.47852 12.5215L2.24414 10.3887H6.14746L6.90625 12.5215C7.05664 13 7.2959 13.1914 7.74707 13.1914C8.22559 13.1914 8.5332 12.9043 8.5332 12.4531C8.5332 12.2891 8.50586 12.1523 8.44434 11.9678L5.41602 3.79199C5.2041 3.21777 4.82129 2.9375 4.19922 2.9375C3.60449 2.9375 3.21484 3.21777 3.0166 3.78516L-0.0322266 12.002C-0.09375 12.1797 -0.121094 12.3232 -0.121094 12.4668C-0.121094 12.918 0.166016 13.1914 0.637695 13.1914ZM2.63379 9.12402L4.17871 4.68066H4.21973L5.76465 9.12402H2.63379ZM12.2793 13.2324C13.3115 13.2324 14.2891 12.6787 14.7129 11.8037H14.7402V12.5762C14.7471 12.9863 15.0273 13.2393 15.4238 13.2393C15.834 13.2393 16.1143 12.9795 16.1143 12.5215V8.00977C16.1143 6.49902 14.9658 5.52148 13.1543 5.52148C11.7666 5.52148 10.6592 6.08887 10.2695 6.99121C10.1943 7.15527 10.1533 7.3125 10.1533 7.46289C10.1533 7.81152 10.4062 8.04395 10.7686 8.04395C11.0215 8.04395 11.2129 7.94824 11.3496 7.73633C11.7529 6.99121 12.2861 6.65625 13.1064 6.65625C14.0977 6.65625 14.6992 7.20996 14.6992 8.1123V8.67285L12.5664 8.7959C10.7686 8.8916 9.77734 9.69824 9.77734 11.0107C9.77734 12.3369 10.8096 13.2324 12.2793 13.2324ZM12.6621 12.1387C11.8008 12.1387 11.2129 11.667 11.2129 10.9561C11.2129 10.2725 11.7598 9.82129 12.7578 9.75977L14.6992 9.62988V10.3203C14.6992 11.3457 13.7969 12.1387 12.6621 12.1387Z"></path></svg></span>Name</th><th><span class="icon property-icon"><svg class="typesText" role="graphics-symbol" style="width:14px;height:14px;display:block;fill:rgba(55, 53, 47, 0.45);flex-shrink:0" viewBox="0 0 16 16"><path d="M1.56738 3.25879H14.4258C14.7676 3.25879 15.0479 2.97852 15.0479 2.63672C15.0479 2.29492 14.7744 2.02148 14.4258 2.02148H1.56738C1.21875 2.02148 0.952148 2.29492 0.952148 2.63672C0.952148 2.97852 1.22559 3.25879 1.56738 3.25879ZM1.56738 6.84082H14.4258C14.7676 6.84082 15.0479 6.56055 15.0479 6.21875C15.0479 5.87695 14.7744 5.60352 14.4258 5.60352H1.56738C1.21875 5.60352 0.952148 5.87695 0.952148 6.21875C0.952148 6.56055 1.22559 6.84082 1.56738 6.84082ZM1.56738 10.4229H14.4258C14.7676 10.4229 15.0479 10.1426 15.0479 9.80078C15.0479 9.45898 14.7744 9.18555 14.4258 9.18555H1.56738C1.21875 9.18555 0.952148 9.45898 0.952148 9.80078C0.952148 10.1426 1.22559 10.4229 1.56738 10.4229ZM1.56738 14.0049H8.75879C9.10059 14.0049 9.38086 13.7246 9.38086 13.3828C9.38086 13.041 9.10742 12.7676 8.75879 12.7676H1.56738C1.21875 12.7676 0.952148 13.041 0.952148 13.3828C0.952148 13.7246 1.22559 14.0049 1.56738 14.0049Z"></path></svg></span>contact</th><th><span class="icon property-icon"><svg class="typesText" role="graphics-symbol" style="width:14px;height:14px;display:block;fill:rgba(55, 53, 47, 0.45);flex-shrink:0" viewBox="0 0 16 16"><path d="M1.56738 3.25879H14.4258C14.7676 3.25879 15.0479 2.97852 15.0479 2.63672C15.0479 2.29492 14.7744 2.02148 14.4258 2.02148H1.56738C1.21875 2.02148 0.952148 2.29492 0.952148 2.63672C0.952148 2.97852 1.22559 3.25879 1.56738 3.25879ZM1.56738 6.84082H14.4258C14.7676 6.84082 15.0479 6.56055 15.0479 6.21875C15.0479 5.87695 14.7744 5.60352 14.4258 5.60352H1.56738C1.21875 5.60352 0.952148 5.87695 0.952148 6.21875C0.952148 6.56055 1.22559 6.84082 1.56738 6.84082ZM1.56738 10.4229H14.4258C14.7676 10.4229 15.0479 10.1426 15.0479 9.80078C15.0479 9.45898 14.7744 9.18555 14.4258 9.18555H1.56738C1.21875 9.18555 0.952148 9.45898 0.952148 9.80078C0.952148 10.1426 1.22559 10.4229 1.56738 10.4229ZM1.56738 14.0049H8.75879C9.10059 14.0049 9.38086 13.7246 9.38086 13.3828C9.38086 13.041 9.10742 12.7676 8.75879 12.7676H1.56738C1.21875 12.7676 0.952148 13.041 0.952148 13.3828C0.952148 13.7246 1.22559 14.0049 1.56738 14.0049Z"></path></svg></span>소개</th><th><span class="icon property-icon"><svg class="typesMultipleSelect" role="graphics-symbol" style="width:14px;height:14px;display:block;fill:rgba(55, 53, 47, 0.45);flex-shrink:0" viewBox="0 0 16 16"><path d="M1.91602 4.83789C2.44238 4.83789 2.87305 4.40723 2.87305 3.87402C2.87305 3.34766 2.44238 2.91699 1.91602 2.91699C1.38281 2.91699 0.952148 3.34766 0.952148 3.87402C0.952148 4.40723 1.38281 4.83789 1.91602 4.83789ZM5.1084 4.52344H14.3984C14.7607 4.52344 15.0479 4.23633 15.0479 3.87402C15.0479 3.51172 14.7607 3.22461 14.3984 3.22461H5.1084C4.74609 3.22461 4.45898 3.51172 4.45898 3.87402C4.45898 4.23633 4.74609 4.52344 5.1084 4.52344ZM1.91602 9.03516C2.44238 9.03516 2.87305 8.60449 2.87305 8.07129C2.87305 7.54492 2.44238 7.11426 1.91602 7.11426C1.38281 7.11426 0.952148 7.54492 0.952148 8.07129C0.952148 8.60449 1.38281 9.03516 1.91602 9.03516ZM5.1084 8.7207H14.3984C14.7607 8.7207 15.0479 8.43359 15.0479 8.07129C15.0479 7.70898 14.7607 7.42188 14.3984 7.42188H5.1084C4.74609 7.42188 4.45898 7.70898 4.45898 8.07129C4.45898 8.43359 4.74609 8.7207 5.1084 8.7207ZM1.91602 13.2324C2.44238 13.2324 2.87305 12.8018 2.87305 12.2686C2.87305 11.7422 2.44238 11.3115 1.91602 11.3115C1.38281 11.3115 0.952148 11.7422 0.952148 12.2686C0.952148 12.8018 1.38281 13.2324 1.91602 13.2324ZM5.1084 12.918H14.3984C14.7607 12.918 15.0479 12.6309 15.0479 12.2686C15.0479 11.9062 14.7607 11.6191 14.3984 11.6191H5.1084C4.74609 11.6191 4.45898 11.9062 4.45898 12.2686C4.45898 12.6309 4.74609 12.918 5.1084 12.918Z"></path></svg></span>역할</th></tr></thead><tbody><tr id="9dc4d298-2795-4cbd-9dea-313baae1508f"><td class="cell-title"><a href="https://www.notion.so/9dc4d29827954cbd9dea313baae1508f?pvs=21">전이준</a></td><td class="cell-HYmI"></td><td class="cell-m{xE">TEAM L1A의 구성원을 모아, 프로젝트를 만들었어요.<br/>팀이 함께하는 동안 의미있는 결과를 낼 수 있도록 하는 것이 목표입니다.<br/><br/>째깍 서비스의 방향성을 정립하며 팀이 한 곳을 보고 제품이 탄생할 수 있도록 돕고 있습니다.<br/>현생에서는 모빌리티 서비스의 PM을 맡고 있습니다.<br/></td><td class="cell-At[s"><span class="selected-value select-value-color-brown">Marketer</span><span class="selected-value select-value-color-red">Product Owner</span></td></tr><tr id="64843cbb-e6a5-454e-9e90-8605649c4739"><td class="cell-title"><a href="https://www.notion.so/64843cbbe6a5454e9e908605649c4739?pvs=21"><span class="icon">🧐</span>박소영</a></td><td class="cell-HYmI"></td><td class="cell-m{xE">째깍 프로덕트의 제품 책임자입니다. 째깍이 모습을 갖춰나갈 수 있도록 서비스 기획과 디자인을 담당했습니다. 프로젝트 기능 우선순위를 정하며, 째깍이 사람들에게 사랑받기 위한 서비스를 만드는 역할을 하고 있습니다.<br/><br/>현생에서는 한우 도매 서비스 플랫폼의 PM을 담당하는 중!<br/></td><td class="cell-At[s"><span class="selected-value select-value-color-orange">Designer</span><span class="selected-value select-value-color-default">Product Magager</span></td></tr><tr id="cb34cd57-0219-4881-8cae-039382792d77"><td class="cell-title"><a href="https://www.notion.so/cb34cd57021948818cae039382792d77?pvs=21">채윤호</a></td><td class="cell-HYmI"></td><td class="cell-m{xE">째깍의 백엔드 개발자입니다. 째깍이 유저들이 정해진 약속 시간에 도착할 수 있도록 하는 행동의 뼈대를 구성했습니다. 약속을 만들고, 출발 시간을 정해주고, 약속 시간에 늦지 않기 위한 기능의 API를 만들었습니다.<br/><br/>현생에서는 소영, 원규님과 함께 한우 도매 플랫폼의 백엔드를 맡고 있습니다.<br/></td><td class="cell-At[s"><span class="selected-value select-value-color-gray">Backend Engineer</span></td></tr><tr id="9e27936a-d8e6-4ed9-9810-cc16e75e9e0b"><td class="cell-title"><a href="https://www.notion.so/9e27936ad8e64ed99810cc16e75e9e0b?pvs=21">신원규</a></td><td class="cell-HYmI"></td><td class="cell-m{xE">째깍의 모든 화면을 만든 프론트엔드 개발자입니다. 기획자와 호흡하며 서비스 구현을 위한 방법을 제시하고, 투입 비용을 고려한 개발 선택지를 제안합니다. 더 나은 코드를 위한 고민도 하지만, 떄로는 속도를 올리기 위한 코드를 고민하며 시간과 비용을 관리하는 개발자입니다.</td><td class="cell-At[s"><span class="selected-value select-value-color-purple">Frontend Engineer</span></td></tr><tr id="5c78be89-460d-4a37-801e-f25378c8cdc4"><td class="cell-title"><a href="https://www.notion.so/5c78be89460d4a37801ef25378c8cdc4?pvs=21">이도윤</a></td><td class="cell-HYmI"></td><td class="cell-m{xE">째깍의 개발 인프라를 만들었습니다. 안정적인 환경에서 팀 개발자의 개발 퀄리티를 높일 수 있도록 돕고, 유저의 이용 불안전성을 해소하고자 했습니다. 약속 장소까지 가기 위한 여정 중 유저가 지도와 최소 출발 시간을 살필 수 있는 기능을 만들었습니다.<br/><br/>현생은 외주개발사에서 프로젝트를 진행하고 있습니다.<br/></td><td class="cell-At[s"><span class="selected-value select-value-color-gray">Backend Engineer</span></td></tr><tr id="ac455b79-42e8-4f56-aa0c-2620e55b346f"><td class="cell-title"><a href="https://www.notion.so/ac455b7942e84f56aa0c2620e55b346f?pvs=21">오원우</a></td><td class="cell-HYmI"></td><td class="cell-m{xE">째깍의 정체성을 만들며 톤앤매너와 성격을 정립했습니다. 린 브랜딩 기법을 이용해 짧은 기간내 째깍의 모습을 구체화하고, 제품 브랜딩을 진행했습니다. 브랜딩이 단순 메시지에 그치지 않고 제품과 협업하며 결과물을 만들었습니다.<br/><br/>현생에서는 브랜드 에이전시에서 파트장을 근무하고 있습니다.<br/></td><td class="cell-At[s"><span class="selected-value select-value-color-blue">Brand Manager</span><span class="selected-value select-value-color-brown">Marketer</span></td></tr><tr id="bb301e97-1b79-4163-84b3-143dce374b50"><td class="cell-title"><a href="https://www.notion.so/bb301e971b79416384b3143dce374b50?pvs=21">홍유진</a></td><td class="cell-HYmI"></td><td class="cell-m{xE">째깍의 화면 개발을 담당함과 동시에 째깍 브랜드 이미지를 만들었습니다. 째깍이 사람들에게 사랑받을 수 있도록 아이디어를 제안하고, 현실로 만들었습니다.</td><td class="cell-At[s"><span class="selected-value select-value-color-orange">Designer</span><span class="selected-value select-value-color-purple">Frontend Engineer</span></td></tr><tr id="a5ee732e-a39e-4c80-9081-9805d99c4e6b"><td class="cell-title"><a href="https://www.notion.so/a5ee732ea39e4c8090819805d99c4e6b?pvs=21">차상아</a></td><td class="cell-HYmI"></td><td class="cell-m{xE">째깍 프로덕트의 제품 디자인을 맡았습니다. 째깍러가 약속을 잊지 않고, 늦지 않기 위한 출발 시간을 지킬 수 있는 경험을 최적화했습니다. </td><td class="cell-At[s"><span class="selected-value select-value-color-green">Product Designer</span></td></tr></tbody></table><br/><br/></div><p class="" id="32705ceb-dc00-486f-9a16-b115af84123a">
+</p><h2 class="block-color-default" id="2c71ede4-e76e-4a04-8903-b6cee6479e50">그 밖에도 이런 걸 함께 해요 🎲</h2><hr id="2f4e4bc7-b99b-43b9-a759-6e4d31f65e1a"/><p class="" id="e76bbf94-ab50-4485-a14b-3696450a7c31">시간이 맞는 멤버들끼리 다양한 활동을 함께 해요.</p><p class="" id="9517f3e1-bd0d-4858-9048-83e91d80b8c2">
+</p><h3 class="" id="2657a7f7-be21-4f57-ae9f-fc305bcf6bcd">📌 모각작 (모여서 각자 작업)</h3><p class="block-color-default" id="0056ac46-7ea9-43db-9403-6b32339c4d95">강남, 홍대 등 다양한 장소에서 모여 각자 필요한 작업이나 공부를 해요.</p><figure class="image" id="cec900fd-f4f8-48bf-889d-8c09b2f39e9c"><a href="resource/Untitled%202.png"><img src="resource/Untitled%202.png" style="width:2047px"/></a></figure><p class="" id="94fff245-0f91-4cfb-a6ce-d501ddbaabf4">
+</p><h3 class="block-color-default" id="89cafa11-0a75-4eae-b3ba-2a3e8cbbf5a3">📌 휴식과 영감을 위한 활동</h3><div class="column-list" id="7bc96127-14c3-4838-80b4-a67a357cb645"><div class="column" id="b1f0371f-9a47-4a98-b372-168be8cb4d9a" style="width:50%"><figure class="image" id="cfaf2ab5-1742-4c1d-932b-5eef04391f96"><a href="resource/sonika-agarwal-jkE9poAOhFs-unsplash.jpg"><img src="resource/sonika-agarwal-jkE9poAOhFs-unsplash.jpg" style="width:3500px"/></a><figcaption>방탈출, 보드게임 등을 함께 즐겨요</figcaption></figure></div><div class="column" id="0ec580a9-795d-46cd-9894-02181b6d2dd8" style="width:50%"><figure class="image" id="2427fd7c-67b7-4d6d-86a2-6b2a4bb898df"><a href="resource/Untitled%203.png"><img src="resource/Untitled%203.png" style="width:2070px"/></a><figcaption>맛있는 걸 먹으며 다양한 이야기를 나눠요</figcaption></figure></div></div><p class="" id="c1485aa0-cc76-46c0-ad3c-cd7de0ac0e29">
+</p><h2 class="" id="12225106-4981-49a7-9192-5483c57f7e70">Contact 🤙</h2><hr id="04b4fd1e-b8ae-4bf7-ad32-d52cac937204"/><p class="" id="693b139d-6046-4b33-976a-171b0ff6ad3d"><strong>TEAM L1A</strong>에 대해 궁금한 게 있거나, 이야기를 나눠보고 싶다면 언제든 연락 주세요.</p><div class="column-list" id="af936414-1ebf-4154-b55e-3546b8c5fd92"><div class="column" id="e4983a58-e263-45ca-beb3-e00b749b56a6" style="width:43.75%"><figure class="block-color-gray_background callout" id="7787bb82-dcce-4bf8-8174-ff51f87c7082" style="white-space:pre-wrap;display:flex"><div style="font-size:1.5em"><span class="icon">✉️</span></div><div style="width:100%"><strong>Email</strong><p class="" id="107c6dc3-a720-40f5-9336-1ce0c2a60e9a"><a href="mailto:L1A20230929@gmail.com">L1A20230929@gmail.com</a></p></div></figure></div><div class="column" id="cc4a668e-4af8-42df-b6a2-42fd27065a3e" style="width:56.25%"><figure class="block-color-gray_background callout" id="f71a0209-12ba-4dba-b9da-6dbb838a40ae" style="white-space:pre-wrap;display:flex"><div style="font-size:1.5em"><span class="icon">🗨️</span></div><div style="width:100%"><strong>KakaoTalk</strong><p class="" id="c7dfcf69-912a-417e-bde8-2d86dba59790"><a href="https://open.kakao.com/o/gnWWu6mg">https://open.kakao.com/o/gnWWu6mg</a></p></div></figure></div></div><p class="" id="9262f6fa-dbeb-41e6-aa74-79452c62cd32">
+</p><hr id="aaa99a37-188e-43d7-a5cd-45b55b6b8c77"/><p class="" id="e0edf21c-d833-4e06-a3d6-61e69027fdce"> ※ Last Updated : 2024. 4. 20.</p><p class="" id="1106922c-17ac-4e82-939c-2db0eb45b19d">
+</p></div></article><span class="sans" style="font-size:14px;padding-top:2em"></span>
+<script>
+    (function(){var w=window;if(w.ChannelIO){return w.console.error("ChannelIO script included twice.");}var ch=function(){ch.c(arguments);};ch.q=[];ch.c=function(args){ch.q.push(args);};w.ChannelIO=ch;function l(){if(w.ChannelIOInitialized){return;}w.ChannelIOInitialized=true;var s=document.createElement("script");s.type="text/javascript";s.async=true;s.src="https://cdn.channel.io/plugin/ch-plugin-web.js";var x=document.getElementsByTagName("script")[0];if(x.parentNode){x.parentNode.insertBefore(s,x);}}if(document.readyState==="complete"){l();}else{w.addEventListener("DOMContentLoaded",l);w.addEventListener("load",l);}})();
+
+    ChannelIO('boot', {
+        "pluginKey": "ecb368ba-d710-45d2-96c4-46452fa19c0f"
+    });
+</script>
+</body></html>

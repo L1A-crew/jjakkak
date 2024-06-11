@@ -1,10 +1,9 @@
 package com.zzekak.domain.user
 
 import com.zzekak.ApiUrl
-import com.zzekak.core.domain.user.UserId
-import com.zzekak.core.domain.user.usecase.UserUpdateUseCase
 import com.zzekak.domain.user.reqeust.UserUpdateRequest
 import com.zzekak.domain.user.response.GetUserResponse
+import com.zzekak.domain.user.usecase.UserUpdateUseCase
 import org.springframework.http.MediaType
 import org.springframework.security.core.annotation.AuthenticationPrincipal
 import org.springframework.web.bind.annotation.PostMapping

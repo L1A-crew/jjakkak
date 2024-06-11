@@ -1,4 +1,4 @@
-package com.zzekak.core.domain.common
+package com.zzekak.domain.common
 
 import java.util.UUID
 import kotlin.reflect.full.primaryConstructor

@@ -1,6 +1,6 @@
 package com.zzekak.domain.address.response
 
-import com.zzekak.core.domain.address.model.Coordinate
+import com.zzekak.domain.address.model.Coordinate
 
 internal data class CoordinateResponse(
     override val x: String,

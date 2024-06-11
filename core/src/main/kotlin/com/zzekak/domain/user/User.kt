@@ -1,6 +1,6 @@
-package com.zzekak.core.domain.user
+package com.zzekak.domain.user
 
-import com.zzekak.core.domain.common.IdTypeUUID
+import com.zzekak.domain.common.IdTypeUUID
 import java.time.Instant
 import java.util.UUID
 

@@ -1,13 +1,13 @@
 package com.zzekak.infra.domain.appointment.repository
 
-import com.zzekak.core.domain.appointment.model.AppointmentCommand
-import com.zzekak.core.domain.appointment.model.AppointmentId
-import com.zzekak.core.domain.appointment.model.AppointmentQuery
-import com.zzekak.core.domain.appointment.repository.AppointmentRepository
-import com.zzekak.core.domain.user.UserId
 import com.zzekak.domain.address.entity.AppointmentAddressEntity
 import com.zzekak.domain.address.model.AppointmentAddress
 import com.zzekak.domain.address.model.AppointmentAddressId
+import com.zzekak.domain.appointment.model.AppointmentCommand
+import com.zzekak.domain.appointment.model.AppointmentId
+import com.zzekak.domain.appointment.model.AppointmentQuery
+import com.zzekak.domain.appointment.repository.AppointmentRepository
+import com.zzekak.domain.user.UserId
 import com.zzekak.infra.domain.appointment.dao.AppointmentEntityDao
 import com.zzekak.infra.domain.appointment.entity.AppointmentEntity
 import com.zzekak.infra.domain.user.dao.UserEntityDao

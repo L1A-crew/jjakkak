@@ -1,9 +1,9 @@
 package com.zzekak.domain.user
 
 import com.zzekak.ApiUrl
-import com.zzekak.core.domain.user.usecase.TokenRefreshUseCase
 import com.zzekak.domain.user.reqeust.RefreshTokenRequest
 import com.zzekak.domain.user.response.TokenResponse
+import com.zzekak.domain.user.usecase.TokenRefreshUseCase
 import org.springframework.http.MediaType
 import org.springframework.web.bind.annotation.PostMapping
 import org.springframework.web.bind.annotation.RequestBody

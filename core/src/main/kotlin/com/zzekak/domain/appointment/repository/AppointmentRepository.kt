@@ -1,8 +1,8 @@
-package com.zzekak.core.domain.appointment.repository
+package com.zzekak.domain.appointment.repository
 
-import com.zzekak.core.domain.appointment.model.AppointmentCommand
-import com.zzekak.core.domain.appointment.model.AppointmentQuery
-import com.zzekak.core.domain.user.UserId
+import com.zzekak.domain.appointment.model.AppointmentCommand
+import com.zzekak.domain.appointment.model.AppointmentQuery
+import com.zzekak.domain.user.UserId
 
 interface AppointmentRepository {
     fun save(appointmentCommand: AppointmentCommand): AppointmentQuery

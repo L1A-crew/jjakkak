@@ -1,26 +1,18 @@
 package com.zzekak.domain.appointment.response
 
-import com.fasterxml.jackson.annotation.JsonProperty
-import com.zzekak.core.domain.appointment.model.AppointmentId
-import com.zzekak.core.domain.appointment.model.AppointmentQuery
-import com.zzekak.core.domain.user.UserId
+import com.zzekak.domain.appointment.model.AppointmentId
+import com.zzekak.domain.appointment.model.AppointmentQuery
 import com.zzekak.domain.common.response.AddressResponse
+import com.zzekak.domain.user.UserId
 import java.time.Instant
 
 internal data class CreateAppointmentResponse(
-    @JsonProperty("id")
     val id: AppointmentId,
-    @JsonProperty("ownerId")
     val ownerId: UserId,
-    @JsonProperty("appointmentName")
     val appointmentName: String,
-    @JsonProperty("address")
     val address: AddressResponse,
-    @JsonProperty("appointmentTime")
     val appointmentTime: Instant,
-    @JsonProperty("createdAt")
     val createdAt: Instant,
-    @JsonProperty("updatedAt")
     val updatedAt: Instant
 ) {
     companion object {

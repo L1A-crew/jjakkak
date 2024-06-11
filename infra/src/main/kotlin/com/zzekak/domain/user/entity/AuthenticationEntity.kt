@@ -1,7 +1,7 @@
 package com.zzekak.infra.domain.user.entity
 
-import com.zzekak.core.domain.user.AuthenticationCommand
-import com.zzekak.core.domain.user.AuthenticationId
+import com.zzekak.domain.user.AuthenticationCommand
+import com.zzekak.domain.user.AuthenticationId
 import com.zzekak.domain.user.AuthenticationType
 import com.zzekak.infra.domain.common.entity.AuditableBase
 import com.zzekak.infra.domain.user.converter.AuthenticationTypeConverter

@@ -1,14 +1,12 @@
 package com.zzekak.domain.appointment.response
 
-import com.fasterxml.jackson.annotation.JsonProperty
-import com.zzekak.core.domain.appointment.model.AppointmentId
-import com.zzekak.core.domain.appointment.model.AppointmentQuery
-import com.zzekak.core.domain.user.UserId
+import com.zzekak.domain.appointment.model.AppointmentId
+import com.zzekak.domain.appointment.model.AppointmentQuery
 import com.zzekak.domain.common.response.AddressResponse
+import com.zzekak.domain.user.UserId
 import java.time.Instant
 
 internal data class FindAppointmentResponse(
-    @JsonProperty("content")
     val content: List<FindAppointmentContent>
 ) {
     companion object {
@@ -29,14 +27,9 @@ internal data class FindAppointmentResponse(
 }
 
 internal data class FindAppointmentContent(
-    @JsonProperty("id")
     val id: AppointmentId,
-    @JsonProperty("appointmentName")
     val appointmentName: String,
-    @JsonProperty("address")
     val address: AddressResponse,
-    @JsonProperty("appointmentTime")
     val appointmentTime: Instant,
-    @JsonProperty("participants")
     val participants: List<UserId>,
 )

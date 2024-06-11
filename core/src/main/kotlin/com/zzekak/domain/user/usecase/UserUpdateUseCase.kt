@@ -1,11 +1,11 @@
-package com.zzekak.core.domain.user.usecase
+package com.zzekak.domain.user.usecase
 
-import com.zzekak.core.domain.user.Agreement
-import com.zzekak.core.domain.user.UserCommand
-import com.zzekak.core.domain.user.UserId
-import com.zzekak.core.domain.user.UserQuery
-import com.zzekak.core.domain.user.repository.UserCommandRepository
-import com.zzekak.core.domain.user.repository.UserQueryRepository
+import com.zzekak.domain.user.Agreement
+import com.zzekak.domain.user.UserCommand
+import com.zzekak.domain.user.UserId
+import com.zzekak.domain.user.UserQuery
+import com.zzekak.domain.user.repository.UserCommandRepository
+import com.zzekak.domain.user.repository.UserQueryRepository
 import org.springframework.stereotype.Service
 import java.time.Instant
 

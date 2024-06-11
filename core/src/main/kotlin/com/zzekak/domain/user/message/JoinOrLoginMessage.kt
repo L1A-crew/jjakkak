@@ -1,4 +1,4 @@
-package com.zzekak.core.domain.user.message
+package com.zzekak.domain.user.message
 
 import com.zzekak.domain.user.AuthenticationType
 

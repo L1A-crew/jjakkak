@@ -1,7 +1,7 @@
 package com.zzekak.infra.domain.user.dao
 
-import com.zzekak.core.domain.user.AuthenticationId
-import com.zzekak.core.domain.user.UserId
+import com.zzekak.domain.user.AuthenticationId
+import com.zzekak.domain.user.UserId
 import com.zzekak.infra.domain.user.entity.UserEntity
 import org.springframework.data.jpa.repository.JpaRepository
 import org.springframework.stereotype.Repository

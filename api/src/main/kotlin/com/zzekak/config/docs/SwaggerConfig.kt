@@ -1,6 +1,8 @@
 package com.zzekak.config.docs
 
+import com.fasterxml.jackson.databind.ObjectMapper
 import com.zzekak.ApiUrl
+import io.swagger.v3.core.jackson.ModelResolver
 import io.swagger.v3.oas.models.Components
 import io.swagger.v3.oas.models.OpenAPI
 import io.swagger.v3.oas.models.Operation
@@ -86,6 +88,9 @@ class SwaggerConfig {
                 }
             }
         }
+
+    @Bean
+    fun modelResolver(objectMapper: ObjectMapper): ModelResolver = ModelResolver(objectMapper)
 
     private fun customizeOperation(operation: Operation) {
         // 기본 태그 대체

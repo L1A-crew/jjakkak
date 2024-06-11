@@ -1,9 +1,9 @@
-package com.zzekak.core.domain.user.usecase
+package com.zzekak.domain.user.usecase
 
 import com.auth0.jwt.JWT
 import com.auth0.jwt.algorithms.Algorithm
-import com.zzekak.core.domain.user.Token
-import com.zzekak.core.domain.user.usecase.common.JwtMixin
+import com.zzekak.domain.user.Token
+import com.zzekak.domain.user.usecase.common.JwtMixin
 import org.springframework.beans.factory.annotation.Value
 import org.springframework.stereotype.Service
 import java.util.UUID

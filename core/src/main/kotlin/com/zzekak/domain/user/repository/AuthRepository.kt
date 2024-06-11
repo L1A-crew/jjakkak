@@ -1,4 +1,4 @@
-package com.zzekak.core.domain.user.repository
+package com.zzekak.domain.user.repository
 
 interface AuthRepository {
     fun getKakaoLoginPublicKey(): List<RSAPublicKeyInfo>
