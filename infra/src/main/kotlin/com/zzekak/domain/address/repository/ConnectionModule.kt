@@ -75,6 +75,7 @@ internal class ConnectionModule(val confmKey: String) {
                 arrivalTime,
             ).returnToJSON()
         var response = connectionFindPath(pathFindUrl, req)
+
         val pf = PathFindResponse.to(response)
 
         val result =
@@ -84,6 +85,7 @@ internal class ConnectionModule(val confmKey: String) {
                 duration = pf.duration.text,
                 startAddress = pf.startAddress,
                 endAddress = pf.endAddress,
+                distance = pf.distance.text
             )
         return result
     }

@@ -22,7 +22,9 @@ internal data class PathFindResponse(
     @JsonProperty("start_address")
     val startAddress: String,
     @JsonProperty("end_address")
-    val endAddress: String
+    val endAddress: String,
+    @JsonProperty("distance")
+    val distance: Distance
 ) {
     // jsonObject에서 필요한 객체 꺼내는 메서드
     companion object {
@@ -35,6 +37,7 @@ internal data class PathFindResponse(
                     Duration("", 0),
                     "",
                     "",
+                    Distance("", 0)
                 )
             }
             val legs: JsonArray = routes[0].jsonObject.get("legs") as JsonArray
@@ -47,6 +50,7 @@ internal data class PathFindResponse(
             val duration = Json.decodeFromJsonElement<Duration>(legs.get("duration")!!)
             val endAddress = Json.decodeFromJsonElement<String>(legs.get("end_address")!!)
             val startAddress = Json.decodeFromJsonElement<String>(legs.get("start_address")!!)
+            val distance = Json.decodeFromJsonElement<Distance>(legs.get("distance")!!)
 
             return PathFindResponse(
                 arrivalTime = arrivalTime,
@@ -54,6 +58,7 @@ internal data class PathFindResponse(
                 duration = duration,
                 endAddress = endAddress,
                 startAddress = startAddress,
+                distance = distance
             )
         }
     }
@@ -80,6 +85,12 @@ internal data class DepartureTime(
 // 예상 소요시간. 약속시간 기준
 @Serializable
 internal data class Duration(
+    val text: String,
+    val value: Long
+)
+
+@Serializable
+internal data class Distance(
     val text: String,
     val value: Long
 )
