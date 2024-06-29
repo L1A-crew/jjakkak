@@ -5,5 +5,6 @@ data class SearchedPathResponse(
     val arrivalTime: String,
     val duration: String,
     val startAddress: String,
-    val endAddress: String
+    val endAddress: String,
+    val distance: String
 )
