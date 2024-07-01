@@ -10,5 +10,5 @@ class CreateAppointmentUseCase(
     val appointmentRepo: AppointmentRepository
 ) {
     fun createAppointment(appointment: AppointmentCommand): AppointmentQuery =
-        appointmentRepo.save(appointment, AppointmentQuery::class)
+        appointmentRepo.save(appointment.join(appointment.ownerId), AppointmentQuery::class)
 }

@@ -5,7 +5,6 @@ import io.swagger.v3.oas.annotations.media.Schema
 import org.springframework.http.HttpStatus
 
 enum class ExceptionEnumDto(
-    @Schema(name = "code", example = "U-001")
     val code: String,
     val rStatus: HttpStatus,
     val message: String

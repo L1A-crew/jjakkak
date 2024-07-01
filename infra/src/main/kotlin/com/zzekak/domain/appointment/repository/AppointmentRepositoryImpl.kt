@@ -9,17 +9,26 @@ import com.zzekak.domain.appointment.model.Appointment
 import com.zzekak.domain.appointment.model.AppointmentCommand
 import com.zzekak.domain.appointment.model.AppointmentId
 import com.zzekak.domain.appointment.model.AppointmentQuery
+import com.zzekak.domain.appointmentmission.dao.AppointmentMissionEntityDao
+import com.zzekak.domain.appointmentmission.entity.AppointmentMissionEntity
+import com.zzekak.domain.appointmentmission.entity.AppointmentMissionId
+import com.zzekak.domain.mission.entity.MissionEntity
+import com.zzekak.domain.mission.model.AppointmentMissionCommand
+import com.zzekak.domain.mission.model.MissionCommand
 import com.zzekak.domain.user.UserId
 import com.zzekak.domain.user.dao.UserEntityDao
 import com.zzekak.domain.user.entity.UserEntity
 import org.springframework.stereotype.Repository
 import org.springframework.transaction.annotation.Transactional
+import java.time.Instant
+import java.time.ZonedDateTime
 import kotlin.reflect.KClass
 
 @Repository
 internal class AppointmentRepositoryImpl(
     val dao: AppointmentEntityDao,
-    val userDao: UserEntityDao
+    val userDao: UserEntityDao,
+    val appointmentMissionDao: AppointmentMissionEntityDao
 ) : AppointmentRepository {
     @Transactional
     override fun <T : Appointment> save(
@@ -28,7 +37,6 @@ internal class AppointmentRepositoryImpl(
     ): T {
         val existed = dao.findById(appointmentCommand.id)
         val existedUsers = userDao.findAllByIds(appointmentCommand.participants)
-
         val saved =
             dao.save(
                 appointmentCommand.toEntity(
@@ -37,6 +45,21 @@ internal class AppointmentRepositoryImpl(
                 ),
             )
 
+            /*약속 생성 시 자동으로 미션테이블 insert*/
+        saved.participants.forEach { ptcp: UserEntity ->
+            val apntMisn = AppointmentMissionCommand(
+                appointmentId = AppointmentId(saved.appointmentId),
+                userId = UserId(ptcp.userId),
+                missionStepOneCompleteAt = null,
+                missionStepTwoCompleteAt = null
+            ).toMissionEntity(
+                appointment = saved,
+                participants = ptcp,
+                missionStepOneComplateAt = null,
+                missionStepTwoCompleteAt = null
+            )
+            appointmentMissionDao.save(apntMisn)
+        }
         return saved.toDomain(returnType)
     }
 
@@ -70,6 +93,23 @@ internal class AppointmentRepositoryImpl(
         appointmentTime = appointmentTime,
         participants = participants.toSet(),
         deleted = deleted,
+    )
+
+    private fun AppointmentMissionCommand.toMissionEntity(
+        appointment: AppointmentEntity,
+        participants: UserEntity,
+        missionStepOneComplateAt: Instant?,
+        missionStepTwoCompleteAt: Instant?
+    ) : AppointmentMissionEntity = AppointmentMissionEntity(
+        id = AppointmentMissionId(
+            appointmentId = appointment.appointmentId,
+            userId =participants.userId,
+            apntMisnId = null,
+        ),
+        appointment = appointment,
+        user = participants,
+        missionStepOneCompleteAt = missionStepOneComplateAt,
+        missionStepTwoCompleteAt = missionStepTwoCompleteAt,
     )
 
     private fun AppointmentAddress.toEntity(existed: AppointmentAddressEntity?) =
@@ -126,5 +166,14 @@ internal class AppointmentRepositoryImpl(
             y = y,
             undergroundYn = "N",
             buildingName = "",
+        )
+
+    /* 미션 생성 관련 처리*/
+    private fun MissionCommand.toEntity() =
+        MissionEntity(
+            missionId = this.missionId,
+            missionContents = this.missionContents,
+            contentType = this.contentType,
+            createAt = ZonedDateTime.now().toInstant()
         )
 }

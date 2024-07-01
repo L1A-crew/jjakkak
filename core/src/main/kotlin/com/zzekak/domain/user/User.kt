@@ -14,7 +14,7 @@ data class UserCommand(
     val agreement: Agreement,
     val isRemoved: Boolean
 ) {
-    fun deleteUser(): UserCommand = this.copy()
+    fun deleteUser(): UserCommand = this.copy(isRemoved = true)
 }
 
 data class UserQuery(

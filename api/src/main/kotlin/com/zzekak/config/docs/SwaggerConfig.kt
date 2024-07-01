@@ -57,6 +57,13 @@ class SwaggerConfig {
             .build()
 
     @Bean
+    fun missionApi(): GroupedOpenApi =
+        GroupedOpenApi.builder()
+            .group("Mission API")
+            .pathsToMatch("${ApiUrl.MISSION}/**")
+            .addOpenApiCustomizer(openApiCustomizer())
+            .build()
+    @Bean
     fun customOpenAPI(): OpenAPI =
         OpenAPI()
             .info(

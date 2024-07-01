@@ -15,19 +15,10 @@ interface WithdrawalUseCase {
 @Service
 internal class WithdrawalUseCaseImpl(
     val userRepo: UserCommandRepository,
-    val userQuery: UserQueryRepository
 ) : WithdrawalUseCase {
     override fun withdrawal(userId: UUID): WithdrawalResult {
         val user = userRepo.findById(UserId(userId)) ?: throw ZzekakException(ExceptionEnum.NO_EXIST_USER)
-        val users = UserCommand(
-            id = user.id,
-            name = user.name,
-            authenticationCommand = user.authenticationCommand,
-            agreement = user.agreement,
-            isRemoved = true
-        ).deleteUser()
-
-        return userRepo.save(users).let {
+        return userRepo.save(user.deleteUser()).let {
             WithdrawalResult(
                 result = 'Y',
                 message = "성공적으로 탈퇴처리 되었습니다.",

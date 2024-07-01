@@ -27,6 +27,11 @@ object ApiUrl {
     const val PATH = "/path"
     const val PATH_FINDING = "$PATH/find"
 
+    //mission
+    const val MISSION = "/mission"
+    const val SEARCH_APPOINT_MISSION = "$MISSION/search/{${PathVariable.APPOINTMENT}}"
+    const val UPDATE_MISSION = "$MISSION/update"
+
     // Exception
     const val EXCEPTION = "/exception"
 }
