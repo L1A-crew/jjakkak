@@ -1,12 +1,9 @@
 package com.zzekak.domain.appointmentmission.entity
 
 import com.zzekak.domain.appointment.entity.AppointmentEntity
-import com.zzekak.domain.appointment.model.AppointmentId
 import com.zzekak.domain.appointmentmission.entity.AppointmentMissionEntity.Companion.TABLE_APPOINTMENT_MISSION
 import com.zzekak.domain.mission.MissionCode
-import com.zzekak.domain.mission.entity.MissionEntity
 import com.zzekak.domain.mission.model.UpdateMissionStatusCommand
-import com.zzekak.domain.user.UserId
 import com.zzekak.domain.user.entity.UserEntity
 import jakarta.persistence.*
 import org.springframework.data.jpa.domain.support.AuditingEntityListener

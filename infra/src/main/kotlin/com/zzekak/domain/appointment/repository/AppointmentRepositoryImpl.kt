@@ -12,9 +12,7 @@ import com.zzekak.domain.appointment.model.AppointmentQuery
 import com.zzekak.domain.appointmentmission.dao.AppointmentMissionEntityDao
 import com.zzekak.domain.appointmentmission.entity.AppointmentMissionEntity
 import com.zzekak.domain.appointmentmission.entity.AppointmentMissionId
-import com.zzekak.domain.mission.entity.MissionEntity
 import com.zzekak.domain.mission.model.AppointmentMissionCommand
-import com.zzekak.domain.mission.model.MissionCommand
 import com.zzekak.domain.user.UserId
 import com.zzekak.domain.user.dao.UserEntityDao
 import com.zzekak.domain.user.entity.UserEntity
@@ -169,11 +167,11 @@ internal class AppointmentRepositoryImpl(
         )
 
     /* 미션 생성 관련 처리*/
-    private fun MissionCommand.toEntity() =
-        MissionEntity(
-            missionId = this.missionId,
-            missionContents = this.missionContents,
-            contentType = this.contentType,
-            createAt = ZonedDateTime.now().toInstant()
-        )
+//    private fun MissionCommand.toEntity() =
+//        MissionEntity(
+//            missionId = this.missionId,
+//            missionContents = this.missionContents,
+//            contentType = this.contentType,
+//            createAt = ZonedDateTime.now().toInstant()
+//        )
 }
