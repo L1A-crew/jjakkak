@@ -7,5 +7,6 @@ internal data class UserUpdateRequest(
     val name: String?,
     val marketingConsent: Boolean?,
     val locationConsent: Boolean?,
-    val pushNotificationConsent: Boolean?
+    val pushNotificationConsent: Boolean?,
+    val fcmKey: String?
 )

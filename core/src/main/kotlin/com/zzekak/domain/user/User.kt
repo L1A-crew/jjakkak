@@ -12,7 +12,8 @@ data class UserCommand(
     val name: String,
     val authenticationCommand: AuthenticationCommand,
     val agreement: Agreement,
-    val isRemoved: Boolean
+    val isRemoved: Boolean,
+    val fcmKey: String
 ) {
     fun deleteUser(): UserCommand = this.copy(isRemoved = true)
 }

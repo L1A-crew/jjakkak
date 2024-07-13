@@ -17,7 +17,8 @@ interface UserUpdateUseCase {
         val name: String? = null,
         val marketingConsent: Boolean? = null,
         val locationConsent: Boolean? = null,
-        val pushNotificationConsent: Boolean? = null
+        val pushNotificationConsent: Boolean? = null,
+        val fcmKey: String? = null
     )
 }
 
@@ -56,6 +57,7 @@ internal data class UserUpdateUseCaseImpl(
                         ),
                 ),
             isRemoved = false,
+            fcmKey = message.fcmKey?: found.fcmKey
         ).run { userCommandRepo.save(this) }
 
         return userQueryRepo.getById(message.userId)

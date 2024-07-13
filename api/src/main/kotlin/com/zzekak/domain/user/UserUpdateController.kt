@@ -40,6 +40,7 @@ internal class UserUpdateControllerImpl(
                     marketingConsent = request.marketingConsent,
                     locationConsent = request.locationConsent,
                     pushNotificationConsent = request.pushNotificationConsent,
+                    fcmKey = request.fcmKey
                 ),
         ).run { GetUserResponse.from(this) }
 }

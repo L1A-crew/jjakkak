@@ -85,6 +85,7 @@ internal class JoinOrLoginUseCaseImpl(
             ),
         agreement = Agreement.EMPTY,
         isRemoved = false,
+        fcmKey = ""
     )
 
     private fun AuthenticationType.getRSAPublicKeyInfo(authToken: AuthToken): AuthRepository.RSAPublicKeyInfo =

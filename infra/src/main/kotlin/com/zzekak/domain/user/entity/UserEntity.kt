@@ -34,7 +34,9 @@ class UserEntity(
     @Column(name = COLUMN_PUSH_NOTIFICATION_CONSENT)
     var pushNotificationConsent: Instant?,
     @Column(name = COLUMN_IS_REMOVED)
-    var isRemoved: Boolean
+    var isRemoved: Boolean,
+    @Column(name = COlUMN_FCM_KEY)
+    var fcmKey: String
 ) : AuditableBase() {
     fun toDomain(): UserCommand =
         UserCommand(
@@ -48,6 +50,7 @@ class UserEntity(
                     pushNotificationConsent = pushNotificationConsent,
                 ),
             isRemoved = isRemoved,
+            fcmKey = fcmKey
         )
 
     companion object {
@@ -58,6 +61,7 @@ class UserEntity(
         private const val COLUMN_LOCATION_CONSENT = "location_consent"
         private const val COLUMN_PUSH_NOTIFICATION_CONSENT = "push_notification_consent"
         private const val COLUMN_IS_REMOVED = "is_removed"
+        private const val COlUMN_FCM_KEY = "fcm_key"
 
         fun from(src: UserCommand): UserEntity =
             UserEntity(
@@ -68,6 +72,7 @@ class UserEntity(
                 locationConsent = src.agreement.locationConsent,
                 pushNotificationConsent = src.agreement.pushNotificationConsent,
                 isRemoved = src.isRemoved,
+                fcmKey = src.fcmKey
             ).apply {
                 authenticationEntity.userEntity = this
             }
