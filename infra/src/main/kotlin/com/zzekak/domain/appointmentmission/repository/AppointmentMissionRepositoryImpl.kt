@@ -19,15 +19,5 @@ internal class AppointmentMissionRepositoryImpl(
         returnType: KClass<out T>
     ): List<T> = amDao.findByAppointmentId(appointmentId.value)
 
-    override fun updateMissionStatus(missionCmd: UpdateMissionStatusCommand) {
-        val mission: AppointmentMissionEntity =
-            amDao.findById(
-                AppointmentMissionId(
-                    appointmentId = missionCmd.appointmentId.value,
-                    apntMisnId = missionCmd.appointmentMissionId,
-                    userId = missionCmd.userId.value,
-                ),
-            )
-        amDao.save(mission.updateEntity(missionCmd))
-    }
+
 }

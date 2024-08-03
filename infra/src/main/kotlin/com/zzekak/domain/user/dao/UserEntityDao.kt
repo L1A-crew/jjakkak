@@ -25,6 +25,7 @@ interface UserEntityDao {
     ): UserEntity?
 
     fun findAllByIds(ids: Collection<UserId>): List<UserEntity>
+    fun findById(ownerId: UserId): UserEntity
 }
 
 @Repository
@@ -69,4 +70,8 @@ internal class UserEntityDaoImpl(
 
     override fun findAllByIds(ids: Collection<UserId>): List<UserEntity> =
         delegate.findAllByUserIdIn(ids.map { it.value })
+
+    override fun findById(ownerId: UserId): UserEntity {
+        return delegate.findById(ownerId.value).get()
+    }
 }

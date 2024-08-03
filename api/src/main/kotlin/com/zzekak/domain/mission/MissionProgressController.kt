@@ -20,10 +20,10 @@ internal interface MissionProgressController {
         @PathVariable(com.zzekak.PathVariable.APPOINTMENT) appointmentId: UUID
     ): SearchedMissionResponse
 
-    @PutMapping(ApiUrl.UPDATE_MISSION)
-    fun updateMissionStatus(
-        @RequestBody body: UpdateMissionRequest
-    ): SearchedMissionResponse
+//    @PutMapping("${ApiUrl.UPDATE_MISSION}")
+//    fun updateMissionStatus(
+//        @RequestBody body: UpdateMissionRequest
+//    ): SearchedMissionResponse
 }
 
 @RestController
@@ -35,14 +35,14 @@ internal class MissionProgressControllerImpl(
             SearchedMissionResponse.from(this)
         }
 
+    /*
     override fun updateMissionStatus(body: UpdateMissionRequest): SearchedMissionResponse =
-        appointmentMissionUseCase.updateMissionStatus(
-            UpdateMissionStatusCommand(
-                appointmentMissionId = body.appointmentMissionId,
-                appointmentId = AppointmentId(body.appointmentId),
-                userId = UserId(body.userId),
-                missionStep = body.missionStep,
-                completeDateTime = body.completeDateTime,
-            ),
-        ).run { SearchedMissionResponse.from(this) }
+        appointmentMissionUseCase.updateMissionStatus(UpdateMissionStatusCommand(
+            appointmentMissionId = body.appointmentMissionId,
+            appointmentId = AppointmentId(body.appointmentId),
+            userId = UserId(body.userId),
+            missionStep = body.missionStep,
+            completeDateTime = body.completeDateTime
+        )).run { SearchedMissionResponse.from(this) }*/
+
 }

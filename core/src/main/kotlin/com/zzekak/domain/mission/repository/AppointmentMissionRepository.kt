@@ -11,5 +11,4 @@ interface AppointmentMissionRepository {
         returnType: KClass<out T>
     ): List<T>
 
-    fun updateMissionStatus(mission: UpdateMissionStatusCommand)
 }

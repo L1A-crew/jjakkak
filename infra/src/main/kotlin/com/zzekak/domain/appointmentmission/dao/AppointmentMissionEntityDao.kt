@@ -32,22 +32,20 @@ class AppointmentMissionEntityDaoImpl(
     override fun save(apms: AppointmentMissionEntity): AppointmentMissionEntity = repo.save(apms)
 
     override fun <T> findByAppointmentId(appointmentId: UUID): List<T> {
-        val jpql =
-            """
-            SELECT new com.zzekak.domain.mission.model.AppointmentUserMissionQuery(
-                  am.id.apntMisnId,
-                  am.appointment.appointmentId,
-                  u.name,
-                  case when am.missionStepOneCompleteAt is null then 'N' else 'Y' end,
-                  case when am.missionStepTwoCompleteAt is null then 'N' else 'Y' end,
-                  am.missionStepOneCompleteAt,
-                  am.missionStepTwoCompleteAt,
-                  u.userId
-              )
-             FROM AppointmentMissionEntity am
-             JOIN UserEntity u ON am.user = u
-             WHERE am.appointment.appointmentId = :appointmentId
-            """.trimIndent()
+        val jpql = """
+              SELECT new com.zzekak.domain.mission.model.AppointmentUserMissionQuery(
+                    am.id.missionId,
+                    am.appointment.appointmentId,
+                    u.name,
+                    u.userId,
+                    am.phaseCd,
+                    am.completeAt
+                )
+               FROM AppointmentMissionEntity am
+               JOIN UserEntity u ON am.user = u
+               JOIN MissionEntity m ON am.mission = m
+               WHERE am.appointment.appointmentId = :appointmentId
+        """.trimIndent()
 
         val query = entityManager.createQuery(jpql, AppointmentUserMissionQuery::class.java)
         query.setParameter("appointmentId", appointmentId)

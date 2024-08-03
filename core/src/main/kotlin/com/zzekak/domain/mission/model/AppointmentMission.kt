@@ -11,20 +11,21 @@ sealed interface AppointmentMission
 data class AppointmentMissionCommand(
     val appointmentId: AppointmentId,
     val userId: UserId,
-    val missionStepOneCompleteAt: Instant?,
-    val missionStepTwoCompleteAt: Instant?,
-) : AppointmentMission
+    val missionId: Long,
+    val phaseCd: MissionCode,
+    val completeAt: Instant?
+): AppointmentMission
+
 
 data class AppointmentUserMissionQuery(
-    val appointmentMissionId: Long,
+    val missionId: Long,
     val appointmentId: AppointmentId,
     val userName: String,
-    val missionStepOneComplteYn: String,
-    val missionStepTwoComplteYn: String,
-    val missionStepOneCompleteTime: Instant?,
-    val missionStepTwoComplateTime: Instant?,
-    val userId: UserId
-) : AppointmentMission
+    val userId: UserId,
+    val phaseCd: MissionCode,
+    val complateAt: Instant
+): AppointmentMission
+
 
 data class UpdateMissionStatusCommand(
     val appointmentMissionId: Long,
