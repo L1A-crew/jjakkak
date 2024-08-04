@@ -15,5 +15,4 @@ interface AppointmentMissionRepository {
         cmd: UpdateMissionStatusCommand,
         returnType: KClass<out T>
     ): T
-
 }

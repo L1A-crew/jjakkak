@@ -15,7 +15,6 @@ import org.springframework.stereotype.Service
 class AppointmentPushScheduler(
     val appointmentTimePushDao: AppointmentPushEntityDao,
 ) {
-    /*db엔 UTC로 저장되므로 TimeZone을 Asia/Seoul로 변환하는 작업 필요
-    * utcTime.withZoneSameInstant(ZoneId.of("Asia/Seoul"));*/
-
+    /* db엔 UTC로 저장되므로 TimeZone을 Asia/Seoul로 변환하는 작업 필요
+    utcTime.withZoneSameInstant(ZoneId.of("Asia/Seoul")); */
 }

@@ -3,7 +3,6 @@ package com.zzekak.domain.appointmentmission.dao
 import com.zzekak.domain.appointmentmission.entity.AppointmentMissionEntity
 import com.zzekak.domain.appointmentmission.entity.AppointmentMissionId
 import com.zzekak.domain.mission.model.AppointmentUserMissionQuery
-import com.zzekak.domain.mission.model.UpdateMissionStatusCommand
 import jakarta.persistence.EntityManager
 import jakarta.persistence.PersistenceContext
 import org.springframework.data.jpa.repository.JpaRepository
@@ -35,20 +34,21 @@ class AppointmentMissionEntityDaoImpl(
     override fun save(apms: AppointmentMissionEntity): AppointmentMissionEntity = repo.save(apms)
 
     override fun <T> findByAppointmentId(appointmentId: UUID): List<T> {
-        val jpql = """
-              SELECT new com.zzekak.domain.mission.model.AppointmentUserMissionQuery(
-                    am.id.missionId,
+        val jpql =
+            """
+                SELECT new com.zzekak.domain.mission.model.AppointmentUserMissionQuery(
+                    am.mission.missionId,
                     am.appointment.appointmentId,
                     u.name,
                     u.userId,
                     am.phaseCd,
                     am.completeAt
                 )
-               FROM AppointmentMissionEntity am
-               JOIN UserEntity u ON am.user = u
-               JOIN MissionEntity m ON am.mission = m
-               WHERE am.appointment.appointmentId = :appointmentId
-        """.trimIndent()
+                FROM AppointmentMissionEntity am
+                JOIN UserEntity u ON am.user = u
+                JOIN MissionEntity m ON am.mission = m
+                WHERE am.appointment.appointmentId = :appointmentId
+            """.trimIndent()
 
         val query = entityManager.createQuery(jpql, AppointmentUserMissionQuery::class.java)
         query.setParameter("appointmentId", appointmentId)
@@ -62,6 +62,4 @@ class AppointmentMissionEntityDaoImpl(
         repo.findById(
             appointmentMissionId,
         ).get()
-
-
 }

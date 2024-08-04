@@ -13,38 +13,25 @@ import java.io.Serializable
 @Entity
 @Table(name = AppointmentPushDataEntity.TABLE_APPOINTMENT_PUSH_DATA)
 class AppointmentPushDataEntity(
-
     @EmbeddedId
     val id: AppointmentPushDataId,
-
     @ManyToOne
     @MapsId("appointmentPushId")
-    @JoinColumn(name = COLUMN_APPOINTMENT_PUSH_iD)
+    @JoinColumn(name = COLUMN_APPOINTMENT_PUSH_ID)
     val appointmentPushId: AppointmentPushEntity,
-
-//    @Column(name = COLUMN_PUSH_TYPE)
-//    val pushType: String,
-
     @Column(name = COLUMN_PUSH_MESSAGE)
     val pushValue: String?,
-
     @Column(name = COLUMN_PUSH_DATA_VALUE)
     val pushDataValue: String?,
-
     @Column(name = COLUMN_SEND_AT)
     val sendAt: Boolean
-){
+) {
     companion object {
         const val TABLE_APPOINTMENT_PUSH_DATA = "appointment_push_data"
-        const val COLUMN_PUSH_TYPE = "push_type"
         const val COLUMN_PUSH_MESSAGE = "push_message"
         const val COLUMN_PUSH_DATA_VALUE = "push_data_value"
         const val COLUMN_SEND_AT = "send_at"
-        const val COLUMN_APPOINTMENT_TIME = "appointment_time"
-        const val COLUMN_DEPARTURE_TIME = "departure_time"
-        const val COLUMN_RADIUS_2KM = "radius_2km"
-        const val COLUMN_RADIUS_1KM = "radius_1km"
-        const val COLUMN_APPOINTMENT_PUSH_iD = "appointment_push_id"
+        const val COLUMN_APPOINTMENT_PUSH_ID = "appointment_push_id"
     }
 }
 
@@ -52,4 +39,4 @@ class AppointmentPushDataEntity(
 class AppointmentPushDataId(
     var appointmentPushId: Long,
     var pushType: String
-): Serializable
+) : Serializable

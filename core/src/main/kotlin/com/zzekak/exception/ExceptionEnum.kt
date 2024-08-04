@@ -22,6 +22,6 @@ enum class ExceptionEnum(
     // server관련 Erorr => S-...
     SERVER_ERROR("S-001", HttpStatus.INTERNAL_SERVER_ERROR, "처리 중 오류가 발생했습니다."),
 
-    //mission 관련 Error => M-..
+    // mission 관련 Error => M-..
     MISSION_PHASE_CODE_NOT_EXIST("M-001", HttpStatus.INTERNAL_SERVER_ERROR, "확인되지 않는 미션 ID입니다.")
 }

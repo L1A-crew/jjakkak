@@ -1,6 +1,5 @@
 package com.zzekak.domain.push.dao
 
-import com.zzekak.domain.push.entity.AppointmentPushDataEntity
 import com.zzekak.domain.push.entity.AppointmentPushEntity
 import jakarta.persistence.EntityManager
 import jakarta.persistence.PersistenceContext
@@ -12,16 +11,13 @@ interface AppointmentPushEntityDao {
 }
 
 @Repository
-class AppointmentPushEntityDaoImpl (
+class AppointmentPushEntityDaoImpl(
     val repo: AppointmentPushDataDaoJPARepository,
     @PersistenceContext
     val entityManager: EntityManager
-) : AppointmentPushEntityDao{
+) : AppointmentPushEntityDao {
     override fun save(push: AppointmentPushEntity): AppointmentPushEntity = repo.save(push)
-
 }
 
 @Repository
-interface AppointmentPushDataDaoJPARepository : JpaRepository<AppointmentPushEntity, Long> {
-
-}
+interface AppointmentPushDataDaoJPARepository : JpaRepository<AppointmentPushEntity, Long>

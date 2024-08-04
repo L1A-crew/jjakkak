@@ -25,6 +25,7 @@ interface UserEntityDao {
     ): UserEntity?
 
     fun findAllByIds(ids: Collection<UserId>): List<UserEntity>
+
     fun findById(ownerId: UserId): UserEntity
 }
 

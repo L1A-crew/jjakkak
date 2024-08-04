@@ -1,7 +1,12 @@
 package com.zzekak.domain.mission.entity
 
-import com.zzekak.domain.appointmentmission.entity.AppointmentMissionEntity
-import jakarta.persistence.*
+import jakarta.persistence.Column
+import jakarta.persistence.Entity
+import jakarta.persistence.EntityListeners
+import jakarta.persistence.GeneratedValue
+import jakarta.persistence.GenerationType
+import jakarta.persistence.Id
+import jakarta.persistence.Table
 import org.springframework.data.jpa.domain.support.AuditingEntityListener
 import java.time.Instant
 
@@ -13,13 +18,10 @@ class MissionEntity(
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = COLUMN_MISSION_ID)
     val missionId: Long?,
-
     @Column(name = COLUMN_MISSION_CONTENTS)
     val missionContents: String,
-
     @Column(name = COLUMN_CONTENT_TYPE)
     val contentType: String,
-
     @Column(name = COLUMN_CREATE_AT)
     val createAt: Instant
 ) {

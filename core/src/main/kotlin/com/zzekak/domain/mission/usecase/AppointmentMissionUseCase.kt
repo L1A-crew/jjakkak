@@ -15,5 +15,4 @@ class AppointmentMissionUseCase(
 
     fun updateMissionStatus(cmd: UpdateMissionStatusCommand): AppointmentUserMissionQuery =
         appointmentMissionRepo.updateMissionStatus(cmd, AppointmentUserMissionQuery::class)
-
 }

@@ -16,5 +16,4 @@ internal data class UpdateMissionRequest(
     val completeDateTime: ZonedDateTime,
     @Schema(description = "미션ID")
     val missionId: Long
-
 )

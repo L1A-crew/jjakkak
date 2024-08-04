@@ -30,18 +30,20 @@ internal class AppointmentMissionRepositoryImpl(
         cmd: UpdateMissionStatusCommand,
         returnType: KClass<out T>
     ): T {
-        //미션 상태 업데이트
-        val apnt = amDao.findByAppointmentId(AppointmentMissionId(
-            appointmentId = cmd.appointmentId.value,
-            missionId = cmd.missionId,
-            userId = cmd.userId.value,
-            ))
-        if(apnt == null) throw ZzekakException(ExceptionEnum.MISSION_PHASE_CODE_NOT_EXIST)
+        // 미션 상태 업데이트
+        val apnt =
+            amDao.findByAppointmentId(
+                AppointmentMissionId(
+                    appointmentId = cmd.appointmentId.value,
+                    missionId = cmd.missionId,
+                    userId = cmd.userId.value,
+                ),
+            )
+        if (apnt == null) throw ZzekakException(ExceptionEnum.MISSION_PHASE_CODE_NOT_EXIST)
 
         val updateEntity = apnt.updateEntity()
-        return amDao.save(updateEntity).run{this.toAppointmentMissionQuery() as T}
+        return amDao.save(updateEntity).run { this.toAppointmentMissionQuery() as T }
     }
-
 
     fun AppointmentMissionEntity.updateEntity(): AppointmentMissionEntity {
         return AppointmentMissionEntity(
@@ -50,7 +52,7 @@ internal class AppointmentMissionRepositoryImpl(
             user = this.user,
             mission = this.mission,
             phaseCd = this.phaseCd,
-            completeAt = ZonedDateTime.now().toInstant()
+            completeAt = ZonedDateTime.now().toInstant(),
         )
     }
 
@@ -61,6 +63,6 @@ internal class AppointmentMissionRepositoryImpl(
             userId = UserId(this.user.userId),
             phaseCd = this.phaseCd,
             userName = this.user.name,
-            complateAt = this.completeAt
+            complateAt = this.completeAt,
         )
 }

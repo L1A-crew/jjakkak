@@ -24,36 +24,35 @@ internal data class MissionInfo(
     val completeTime: Instant?,
     val completeAt: String
 )
+
 internal data class AppointmentUserMission(
     val userName: String,
     val userId: UserId,
-    val missionInfo: List<MissionInfo>
-
-){
-
-    companion object{
+    val missionInfo: List<MissionInfo>,
+) {
+    companion object {
         fun from(src: Collection<AppointmentUserMissionQuery>): List<AppointmentUserMission> {
-            var list = src.groupBy { (it.userId to it.userName) }.mapValues {
-                it.value.map { info -> MissionInfo(
-                    appointmentId = info.appointmentId,
-                    missionId = info.missionId,
-                    phaseCd = MissionCode.fromCode(info.phaseCd),
-                    completeTime = info.complateAt,
-                    completeAt = if(info.complateAt != null){"Y"}else{"N"}
-                ) }
-            }
-            val result = list.map {
-                AppointmentUserMission(
-                    userId = it.key.first,
-                    userName = it.key.second,
-                    missionInfo = it.value
-                )
-            }
+            var list =
+                src.groupBy { (it.userId to it.userName) }.mapValues {
+                    it.value.map { info ->
+                        MissionInfo(
+                            appointmentId = info.appointmentId,
+                            missionId = info.missionId,
+                            phaseCd = MissionCode.fromCode(info.phaseCd),
+                            completeTime = info.complateAt,
+                            completeAt = if (info.complateAt != null) "Y" else "N",
+                        )
+                    }
+                }
+            val result =
+                list.map {
+                    AppointmentUserMission(
+                        userId = it.key.first,
+                        userName = it.key.second,
+                        missionInfo = it.value,
+                    )
+                }
             return result
         }
-
-
-
-
     }
 }

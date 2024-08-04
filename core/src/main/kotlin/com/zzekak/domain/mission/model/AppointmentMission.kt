@@ -14,8 +14,7 @@ data class AppointmentMissionCommand(
     val missionId: Long,
     val phaseCd: MissionCode,
     val completeAt: Instant?
-): AppointmentMission
-
+) : AppointmentMission
 
 data class AppointmentUserMissionQuery(
     val missionId: Long,
@@ -24,8 +23,7 @@ data class AppointmentUserMissionQuery(
     val userId: UserId,
     val phaseCd: String,
     val complateAt: Instant?
-): AppointmentMission
-
+) : AppointmentMission
 
 data class UpdateMissionStatusCommand(
     val appointmentId: AppointmentId,

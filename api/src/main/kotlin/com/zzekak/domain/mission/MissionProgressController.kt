@@ -36,14 +36,14 @@ internal class MissionProgressControllerImpl(
             SearchedMissionResponse.from(this)
         }
 
-
     override fun updateMissionStatus(body: UpdateMissionRequest): UpdateMissionResponse =
-        appointmentMissionUseCase.updateMissionStatus(UpdateMissionStatusCommand(
-            appointmentId = AppointmentId(body.appointmentId),
-            userId = UserId(body.userId),
-            missionStep = body.missionStep,
-            completeDateTime = body.completeDateTime,
-            missionId = body.missionId
-        )).run { UpdateMissionResponse.from(this) }
-
+        appointmentMissionUseCase.updateMissionStatus(
+            UpdateMissionStatusCommand(
+                appointmentId = AppointmentId(body.appointmentId),
+                userId = UserId(body.userId),
+                missionStep = body.missionStep,
+                completeDateTime = body.completeDateTime,
+                missionId = body.missionId,
+            ),
+        ).run { UpdateMissionResponse.from(this) }
 }
