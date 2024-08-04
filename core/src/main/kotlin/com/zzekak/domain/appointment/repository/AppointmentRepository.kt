@@ -25,4 +25,5 @@ interface AppointmentRepository {
         id: AppointmentId,
         returnType: KClass<out T>
     ): T?
+
 }

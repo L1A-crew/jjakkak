@@ -5,6 +5,7 @@ import com.zzekak.domain.appointment.model.AppointmentId
 import com.zzekak.domain.mission.model.UpdateMissionStatusCommand
 import com.zzekak.domain.mission.request.UpdateMissionRequest
 import com.zzekak.domain.mission.response.SearchedMissionResponse
+import com.zzekak.domain.mission.response.UpdateMissionResponse
 import com.zzekak.domain.mission.usecase.AppointmentMissionUseCase
 import com.zzekak.domain.user.UserId
 import org.springframework.web.bind.annotation.GetMapping
@@ -20,10 +21,10 @@ internal interface MissionProgressController {
         @PathVariable(com.zzekak.PathVariable.APPOINTMENT) appointmentId: UUID
     ): SearchedMissionResponse
 
-//    @PutMapping("${ApiUrl.UPDATE_MISSION}")
-//    fun updateMissionStatus(
-//        @RequestBody body: UpdateMissionRequest
-//    ): SearchedMissionResponse
+    @PutMapping("${ApiUrl.UPDATE_MISSION}")
+    fun updateMissionStatus(
+        @RequestBody body: UpdateMissionRequest
+    ): UpdateMissionResponse
 }
 
 @RestController
@@ -35,14 +36,14 @@ internal class MissionProgressControllerImpl(
             SearchedMissionResponse.from(this)
         }
 
-    /*
-    override fun updateMissionStatus(body: UpdateMissionRequest): SearchedMissionResponse =
+
+    override fun updateMissionStatus(body: UpdateMissionRequest): UpdateMissionResponse =
         appointmentMissionUseCase.updateMissionStatus(UpdateMissionStatusCommand(
-            appointmentMissionId = body.appointmentMissionId,
             appointmentId = AppointmentId(body.appointmentId),
             userId = UserId(body.userId),
             missionStep = body.missionStep,
-            completeDateTime = body.completeDateTime
-        )).run { SearchedMissionResponse.from(this) }*/
+            completeDateTime = body.completeDateTime,
+            missionId = body.missionId
+        )).run { UpdateMissionResponse.from(this) }
 
 }

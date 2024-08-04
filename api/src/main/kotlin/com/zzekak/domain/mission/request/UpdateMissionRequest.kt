@@ -6,8 +6,6 @@ import java.time.ZonedDateTime
 import java.util.UUID
 
 internal data class UpdateMissionRequest(
-    @Schema(description = "약속_미션ID")
-    val appointmentMissionId: Long,
     @Schema(description = "약속ID")
     val appointmentId: UUID,
     @Schema(description = "유저ID")
@@ -15,5 +13,8 @@ internal data class UpdateMissionRequest(
     @Schema(description = "미션 단계")
     val missionStep: MissionCode,
     @Schema(description = "미션 완료 시간")
-    val completeDateTime: ZonedDateTime
+    val completeDateTime: ZonedDateTime,
+    @Schema(description = "미션ID")
+    val missionId: Long
+
 )

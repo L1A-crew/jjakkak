@@ -22,15 +22,15 @@ data class AppointmentUserMissionQuery(
     val appointmentId: AppointmentId,
     val userName: String,
     val userId: UserId,
-    val phaseCd: MissionCode,
-    val complateAt: Instant
+    val phaseCd: String,
+    val complateAt: Instant?
 ): AppointmentMission
 
 
 data class UpdateMissionStatusCommand(
-    val appointmentMissionId: Long,
     val appointmentId: AppointmentId,
     val userId: UserId,
     val missionStep: MissionCode,
+    val missionId: Long,
     val completeDateTime: ZonedDateTime
 )

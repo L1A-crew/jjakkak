@@ -1,5 +1,8 @@
 package com.zzekak.domain.mission
 
+import com.zzekak.exception.ExceptionEnum
+import com.zzekak.exception.ZzekakException
+
 /**
  * 공통 코드값
  * */
@@ -13,5 +16,10 @@ enum class MissionCode(
 
 
 
+    ;
+    companion object {
+        private val map = values().associateBy(MissionCode::code)
+        fun fromCode(code: String): MissionCode = map[code]?: throw ZzekakException(ExceptionEnum.MISSION_PHASE_CODE_NOT_EXIST)
+    }
 
 }

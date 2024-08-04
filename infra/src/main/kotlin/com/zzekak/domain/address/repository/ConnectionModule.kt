@@ -17,6 +17,7 @@ import org.springframework.web.reactive.function.client.WebClient
 import org.springframework.web.util.DefaultUriBuilderFactory
 import org.springframework.web.util.UriBuilder
 import java.time.ZonedDateTime
+import java.util.logging.Logger
 
 internal class ConnectionModule(val confmKey: String) {
     private val addrUrl = "https://dapi.kakao.com/v2/local/search/address.json"
@@ -75,7 +76,7 @@ internal class ConnectionModule(val confmKey: String) {
                 arrivalTime,
             ).returnToJSON()
         var response = connectionFindPath(pathFindUrl, req)
-
+        println(response)
         val pf = PathFindResponse.to(response)
 
         val result =
@@ -86,6 +87,10 @@ internal class ConnectionModule(val confmKey: String) {
                 startAddress = pf.startAddress,
                 endAddress = pf.endAddress,
                 distance = pf.distance.text,
+                durationValue = pf.duration.value,
+                distanceValue = pf.distance.value,
+                arrivalTimeValue = pf.arrivalTime.value,
+                departureTimeValue = pf.departureTime.value
             )
         return result
     }

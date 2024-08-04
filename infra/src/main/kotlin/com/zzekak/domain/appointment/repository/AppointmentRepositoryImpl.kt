@@ -3,6 +3,8 @@ package com.zzekak.domain.appointment.repository
 import com.zzekak.domain.address.entity.AppointmentAddressEntity
 import com.zzekak.domain.address.model.AppointmentAddress
 import com.zzekak.domain.address.model.AppointmentAddressId
+import com.zzekak.domain.address.model.SearchedPathResponse
+import com.zzekak.domain.address.repository.PathFindingRepository
 import com.zzekak.domain.appointment.dao.AppointmentEntityDao
 import com.zzekak.domain.appointment.entity.AppointmentEntity
 import com.zzekak.domain.appointment.entity.AppointmentUserEntity
@@ -21,12 +23,21 @@ import com.zzekak.domain.mission.dao.MissionEntityDao
 import com.zzekak.domain.mission.entity.MissionEntity
 import com.zzekak.domain.mission.model.AppointmentMissionCommand
 import com.zzekak.domain.mission.model.MissionCommand
+import com.zzekak.domain.push.PushTypeCode
+import com.zzekak.domain.push.dao.AppointmentPushDataEntityDao
+import com.zzekak.domain.push.dao.AppointmentPushEntityDao
+import com.zzekak.domain.push.entity.AppointmentPushDataEntity
+import com.zzekak.domain.push.model.AppointmentPushCommand
+import com.zzekak.domain.push.entity.AppointmentPushDataId
+import com.zzekak.domain.push.entity.AppointmentPushEntity
 import com.zzekak.domain.user.UserId
 import com.zzekak.domain.user.dao.UserEntityDao
 import com.zzekak.domain.user.entity.UserEntity
 import org.springframework.stereotype.Repository
 import org.springframework.transaction.annotation.Transactional
+import java.time.Duration
 import java.time.Instant
+import java.time.ZoneId
 import java.time.ZonedDateTime
 import kotlin.reflect.KClass
 
@@ -36,6 +47,9 @@ internal class AppointmentRepositoryImpl(
     val userDao: UserEntityDao,
     val appointmentMissionDao: AppointmentMissionEntityDao,
     val missionDao: MissionEntityDao,
+    val pathFindingRepo: PathFindingRepository,
+    val appointmentPushDao: AppointmentPushEntityDao,
+    val appointmentPushDataDao: AppointmentPushDataEntityDao
 ) : AppointmentRepository {
     @Transactional
     override fun <T : Appointment> save(
@@ -52,7 +66,9 @@ internal class AppointmentRepositoryImpl(
                 ),
             )
 
-            /*약속 생성 시 자동으로 미션테이블 insert*/
+        /*약속 생성 시 자동으로 insert(mission/push) */
+//        addMission(existedUsers, saved, appointmentCommand)
+
         existedUsers.forEach { ptcp ->
             MissionCode.entries.forEach {
                 val missionEntity = MissionCommand(
@@ -73,8 +89,126 @@ internal class AppointmentRepositoryImpl(
                 )
                 appointmentMissionDao.save(apntMisn)
             }
+            /* App push 발송을 위한 DB insert */
+            var strtX = ""
+            var strtY = ""
+            appointmentCommand.participants.map { participant ->
+                strtX = participant.departureAddress.address.x
+                strtY = participant.departureAddress.address.y
+            }
+
+            val path: SearchedPathResponse = pathFindingRepo.findPath(
+                strtLocX = strtX,
+                strtLocY = strtY,
+                endLocX = appointmentCommand.destinationAddress.address.x,
+                endLocY = appointmentCommand.destinationAddress.address.y,
+                appointmentTime = appointmentCommand.appointmentTime.atZone(ZoneId.of("Asia/Seoul"))
+            )
+            val departure = Instant.ofEpochSecond(path.departureTimeValue).atZone(ZoneId.of("Asia/Seoul"))
+            val arrivalTime = Instant.ofEpochSecond(path.arrivalTimeValue).atZone(ZoneId.of("Asia/Seoul"))
+            val pushCmd = AppointmentPushCommand(
+                appointmentTime = arrivalTime.toInstant(),
+                departureTime = departure.minus(Duration.ofMinutes(5)).toInstant(), //최소출발시간 5분전..!
+                createAt = Instant.now()
+            )
+            val pushEntity = pushCmd.toEntity(
+                appointment = saved,
+                user = ptcp)
+            val apntPush = appointmentPushDao.save(pushEntity)
+
+            PushTypeCode.entries.forEach{
+                if(it.name.startsWith("PUSH_TYPE", true)){
+                    val value =  when(it.code){
+                        PushTypeCode.PUSH_TYPE_DEPARTURE_TIME.code -> pushCmd.departureTime.toString()
+                        PushTypeCode.PUSH_TYPE_ARRIVAL_TIME.code -> pushCmd.appointmentTime.toString()
+                        PushTypeCode.PUSH_TYPE_RADIUS_2KM.code -> "N"
+                        else -> ""
+                    }
+                    println("curr=> ${it.name}, ${it.code}")
+                   val pushDataEntity = apntPush.toPushDataEntity(
+                        type = it,
+                        value = value,
+                    )
+                    println("test -> ${pushDataEntity.id.pushType}")
+                    appointmentPushDataDao.save(pushDataEntity)
+                }
+            }
+
         }
+
+
         return saved.toDomain(returnType)
+    }
+
+    @Transactional
+    fun addMission(existedUsers: List<UserEntity>,
+                   saved: AppointmentEntity,
+                   appointmentCommand: AppointmentCommand
+                   ){
+        existedUsers.forEach { ptcp ->
+            MissionCode.entries.forEach {
+                val missionEntity = MissionCommand(
+                    missionContents = MissionContentsCode.MISSION_TAP,
+                    contentType = MissionContentsType.TAP
+                ).toMissionEntity()
+                val missionSaved = missionDao.save(missionEntity)
+                val apntMisn = AppointmentMissionCommand(
+                    appointmentId = AppointmentId(saved.appointmentId),
+                    userId = UserId(ptcp.userId),
+                    phaseCd = it,
+                    missionId = missionSaved.missionId!!,
+                    completeAt = null
+                ).toApntMisnEntity(
+                    appointment = saved,
+                    participants = ptcp,
+                    mission = missionSaved
+                )
+                appointmentMissionDao.save(apntMisn)
+            }
+            /* App push 발송을 위한 DB insert */
+            var strtX = ""
+            var strtY = ""
+            appointmentCommand.participants.map { participant ->
+                strtX = participant.departureAddress.address.x
+                strtY = participant.departureAddress.address.y
+            }
+
+            val path: SearchedPathResponse = pathFindingRepo.findPath(
+                strtLocX = strtX,
+                strtLocY = strtY,
+                endLocX = appointmentCommand.destinationAddress.address.x,
+                endLocY = appointmentCommand.destinationAddress.address.y,
+                appointmentTime = appointmentCommand.appointmentTime.atZone(ZoneId.of("Asia/Seoul"))
+            )
+            val departure = Instant.ofEpochSecond(path.departureTimeValue).atZone(ZoneId.of("Asia/Seoul"))
+            val arrivalTime = Instant.ofEpochSecond(path.arrivalTimeValue).atZone(ZoneId.of("Asia/Seoul"))
+            val pushCmd = AppointmentPushCommand(
+                appointmentTime = arrivalTime.toInstant(),
+                departureTime = departure.minus(Duration.ofMinutes(5)).toInstant(), //최소출발시간 5분전..!
+                createAt = Instant.now()
+            )
+            val pushEntity = pushCmd.toEntity(
+                appointment = saved,
+                user = ptcp)
+            val apntPush = appointmentPushDao.save(pushEntity)
+            PushTypeCode.entries.forEach{
+                if(it.name.startsWith("PUSH_TYPE", true)){
+                    val value =  when(it.code){
+                        PushTypeCode.PUSH_TYPE_DEPARTURE_TIME.code -> pushCmd.departureTime.toString()
+                        PushTypeCode.PUSH_TYPE_ARRIVAL_TIME.code -> pushCmd.appointmentTime.toString()
+                        PushTypeCode.PUSH_TYPE_RADIUS_2KM.code -> "N"
+                        else -> ""
+                    }
+                    val pushData = apntPush.toPushDataEntity(
+                        type = it,
+                        value = value,
+                    )
+                    appointmentPushDataDao.save(pushData)
+
+                }
+            }
+
+        }
     }
 
     @Transactional
@@ -215,4 +349,28 @@ internal class AppointmentRepositoryImpl(
             contentType = this.contentType.value,
             createAt = ZonedDateTime.now().toInstant()
         )
+
+    private fun AppointmentPushCommand.toEntity(
+        appointment: AppointmentEntity,
+        user: UserEntity
+    ) = AppointmentPushEntity(
+            appointmentPushId = null,
+            appointmentId = appointment,
+            userId = user,
+            createAt = this.createAt
+        )
+    private fun AppointmentPushEntity.toPushDataEntity(
+        type: PushTypeCode,
+        value: String,
+    ) = AppointmentPushDataEntity (
+        appointmentPushId = this,
+//        pushType = type.code,
+        pushValue = null,
+        pushDataValue = value,
+        sendAt = false,
+        id = AppointmentPushDataId(
+            appointmentPushId = this.appointmentPushId!!,
+            pushType = type.code
+        )
+    )
 }

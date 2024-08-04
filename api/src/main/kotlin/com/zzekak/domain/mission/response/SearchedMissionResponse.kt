@@ -12,30 +12,48 @@ internal data class SearchedMissionResponse(
     companion object {
         fun from(src: Collection<AppointmentUserMissionQuery>): SearchedMissionResponse =
             SearchedMissionResponse(
-                missions = src.map(AppointmentUserMission::from),
+                missions = AppointmentUserMission.from(src),
             )
     }
 }
 
-internal data class AppointmentUserMission(
+internal data class MissionInfo(
     val missionId: Long,
     val appointmentId: AppointmentId,
+    val phaseCd: MissionCode,
+    val completeTime: Instant?,
+    val completeAt: String
+)
+internal data class AppointmentUserMission(
     val userName: String,
     val userId: UserId,
-    val phaseCd: MissionCode,
-    val complteAt: Instant
+    val missionInfo: List<MissionInfo>
 
 ){
 
     companion object{
-        fun from(src: AppointmentUserMissionQuery): AppointmentUserMission =
-            AppointmentUserMission(
-                appointmentId = src.appointmentId,
-                userName = src.userName,
-                userId = src.userId,
-                missionId = src.missionId,
-                phaseCd = src.phaseCd,
-                complteAt = src.complateAt
-            )
+        fun from(src: Collection<AppointmentUserMissionQuery>): List<AppointmentUserMission> {
+            var list = src.groupBy { (it.userId to it.userName) }.mapValues {
+                it.value.map { info -> MissionInfo(
+                    appointmentId = info.appointmentId,
+                    missionId = info.missionId,
+                    phaseCd = MissionCode.fromCode(info.phaseCd),
+                    completeTime = info.complateAt,
+                    completeAt = if(info.complateAt != null){"Y"}else{"N"}
+                ) }
+            }
+            val result = list.map {
+                AppointmentUserMission(
+                    userId = it.key.first,
+                    userName = it.key.second,
+                    missionInfo = it.value
+                )
+            }
+            return result
+        }
+
+
+
+
     }
 }

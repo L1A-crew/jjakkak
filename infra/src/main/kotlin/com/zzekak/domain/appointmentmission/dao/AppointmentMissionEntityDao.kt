@@ -3,6 +3,7 @@ package com.zzekak.domain.appointmentmission.dao
 import com.zzekak.domain.appointmentmission.entity.AppointmentMissionEntity
 import com.zzekak.domain.appointmentmission.entity.AppointmentMissionId
 import com.zzekak.domain.mission.model.AppointmentUserMissionQuery
+import com.zzekak.domain.mission.model.UpdateMissionStatusCommand
 import jakarta.persistence.EntityManager
 import jakarta.persistence.PersistenceContext
 import org.springframework.data.jpa.repository.JpaRepository
@@ -16,6 +17,8 @@ interface AppointmentMissionEntityDao {
     fun <T> findByAppointmentId(value: UUID): List<T>
 
     fun findById(appointmentMissionId: AppointmentMissionId): AppointmentMissionEntity
+
+    fun findByAppointmentId(value: AppointmentMissionId): AppointmentMissionEntity
 }
 
 @Repository
@@ -53,8 +56,12 @@ class AppointmentMissionEntityDaoImpl(
         return query.resultList as List<T>
     }
 
+    override fun findByAppointmentId(value: AppointmentMissionId): AppointmentMissionEntity = repo.findById(value).get()
+
     override fun findById(appointmentMissionId: AppointmentMissionId): AppointmentMissionEntity =
         repo.findById(
             appointmentMissionId,
         ).get()
+
+
 }
