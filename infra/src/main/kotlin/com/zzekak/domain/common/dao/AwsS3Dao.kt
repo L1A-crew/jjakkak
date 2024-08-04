@@ -66,7 +66,6 @@ internal class AwsS3DaoImpl(
 
         val fileUrl = s3Utilities.getUrl(getUrlRequest).toString()
 
-        println(fileUrl)
         return fileUrl
     }
 

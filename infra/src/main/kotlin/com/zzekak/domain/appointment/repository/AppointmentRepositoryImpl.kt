@@ -124,12 +124,10 @@ internal class AppointmentRepositoryImpl(
                         PushTypeCode.PUSH_TYPE_RADIUS_2KM.code -> "N"
                         else -> ""
                     }
-                    println("curr=> ${it.name}, ${it.code}")
                    val pushDataEntity = apntPush.toPushDataEntity(
                         type = it,
                         value = value,
                     )
-                    println("test -> ${pushDataEntity.id.pushType}")
                     appointmentPushDataDao.save(pushDataEntity)
                 }
             }
