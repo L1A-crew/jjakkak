@@ -18,6 +18,11 @@ interface UserUpdateUseCase {
         profileImage: MultipartFile
     ): String
 
+    fun updateFcmKey(
+        userId: UserId,
+        fcmKey: String
+    ): UserQuery
+
     data class UserUpdateMessage(
         val userId: UserId,
         val name: String? = null,
@@ -74,6 +79,14 @@ internal data class UserUpdateUseCaseImpl(
         userId: UserId,
         profileImage: MultipartFile
     ): String = userCommandRepo.saveProfileImage(userId, profileImage)
+
+    override fun updateFcmKey(
+        userId: UserId,
+        fcmKey: String
+    ): UserQuery {
+        userCommandRepo.updateFcmKey(userId, fcmKey)
+        return userQueryRepo.getById(userId)
+    }
 
     private fun getConsentInstant(
         consent: Boolean?,

@@ -14,6 +14,7 @@ object ApiUrl {
     const val USER_TOKEN_REFRESH = "$USER/token/refresh"
     const val USER_UPDATE = "$USER/update"
     const val USER_UPDATE_PROFILE_IMAGE = "$USER_UPDATE/profile_image"
+    const val USER_UPDATE_FCM_KEY = "$USER_UPDATE/fcmkey"
 
     // Appointment
     const val APPOINTMENT = "/appointment"

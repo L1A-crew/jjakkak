@@ -1,6 +1,7 @@
 package com.zzekak.domain.user
 
 import com.zzekak.ApiUrl
+import com.zzekak.domain.user.reqeust.UserFcmKeyUpdateRequest
 import com.zzekak.domain.user.reqeust.UserUpdateRequest
 import com.zzekak.domain.user.response.GetUserResponse
 import com.zzekak.domain.user.response.ProfileImageUpdateResponse
@@ -8,6 +9,7 @@ import com.zzekak.domain.user.usecase.UserUpdateUseCase
 import org.springframework.http.MediaType
 import org.springframework.security.core.annotation.AuthenticationPrincipal
 import org.springframework.web.bind.annotation.PostMapping
+import org.springframework.web.bind.annotation.PutMapping
 import org.springframework.web.bind.annotation.RequestBody
 import org.springframework.web.bind.annotation.RequestMapping
 import org.springframework.web.bind.annotation.RequestPart
@@ -31,6 +33,12 @@ internal interface UserUpdateController {
         @RequestPart("profile")
         profileImage: MultipartFile
     ): ProfileImageUpdateResponse
+
+    @PutMapping(ApiUrl.USER_UPDATE_FCM_KEY)
+    fun updateFcmKey(
+        @AuthenticationPrincipal userId: UUID,
+        @RequestBody requst: UserFcmKeyUpdateRequest
+    ): GetUserResponse
 }
 
 @RestController
@@ -60,4 +68,13 @@ internal class UserUpdateControllerImpl(
             userId = UserId(userId),
             profileImage = profileImage,
         ).run { ProfileImageUpdateResponse(accessUrl = this) }
+
+    override fun updateFcmKey(
+        userId: UUID,
+        requst: UserFcmKeyUpdateRequest
+    ): GetUserResponse =
+        userUpdateUseCase.updateFcmKey(
+            userId = UserId(userId),
+            fcmKey = requst.fcmKey,
+        ).run { GetUserResponse.from(this) }
 }

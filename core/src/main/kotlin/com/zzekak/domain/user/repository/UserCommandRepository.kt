@@ -15,4 +15,9 @@ interface UserCommandRepository {
         userId: UserId,
         profileImage: MultipartFile
     ): String
+
+    fun updateFcmKey(
+        userId: UserId,
+        fcmKey: String
+    ): UserCommand
 }

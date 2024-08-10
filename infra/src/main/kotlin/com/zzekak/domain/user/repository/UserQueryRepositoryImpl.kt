@@ -55,6 +55,7 @@ internal class UserQueryRepositoryImpl(
             createdAt = createdAt,
             updatedAt = updatedAt,
             isRemoved = isRemoved,
+            fcmKey = fcmKey,
         )
 
     private fun AuthenticationEntity.toDomainQuery(): AuthenticationQuery =
