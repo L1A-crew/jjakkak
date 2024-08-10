@@ -36,18 +36,18 @@ class AppointmentMissionEntityDaoImpl(
     override fun <T> findByAppointmentId(appointmentId: UUID): List<T> {
         val jpql =
             """
-                SELECT new com.zzekak.domain.mission.model.AppointmentUserMissionQuery(
-                    am.mission.missionId,
-                    am.appointment.appointmentId,
-                    u.name,
-                    u.userId,
-                    am.phaseCd,
-                    am.completeAt
-                )
-                FROM AppointmentMissionEntity am
-                JOIN UserEntity u ON am.user = u
-                JOIN MissionEntity m ON am.mission = m
-                WHERE am.appointment.appointmentId = :appointmentId
+            SELECT new com.zzekak.domain.mission.model.AppointmentUserMissionQuery(
+                am.mission.missionId,
+                am.appointment.appointmentId,
+                u.name,
+                u.userId,
+                am.phaseCd,
+                am.completeAt
+            )
+            FROM AppointmentMissionEntity am
+            JOIN UserEntity u ON am.user = u
+            JOIN MissionEntity m ON am.mission = m
+            WHERE am.appointment.appointmentId = :appointmentId
             """.trimIndent()
 
         val query = entityManager.createQuery(jpql, AppointmentUserMissionQuery::class.java)

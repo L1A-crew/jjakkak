@@ -1,12 +1,5 @@
 package com.zzekak.domain.appointment.repository
 
-import java.time.Duration
-import java.time.Instant
-import java.time.ZoneId
-import java.time.ZonedDateTime
-import kotlin.reflect.KClass
-import org.springframework.stereotype.Repository
-import org.springframework.transaction.annotation.Transactional
 import com.zzekak.domain.address.entity.AppointmentAddressEntity
 import com.zzekak.domain.address.model.AppointmentAddress
 import com.zzekak.domain.address.model.AppointmentAddressId
@@ -34,12 +27,19 @@ import com.zzekak.domain.push.PushTypeCode
 import com.zzekak.domain.push.dao.AppointmentPushDataEntityDao
 import com.zzekak.domain.push.dao.AppointmentPushEntityDao
 import com.zzekak.domain.push.entity.AppointmentPushDataEntity
-import com.zzekak.domain.push.model.AppointmentPushCommand
 import com.zzekak.domain.push.entity.AppointmentPushDataId
 import com.zzekak.domain.push.entity.AppointmentPushEntity
+import com.zzekak.domain.push.model.AppointmentPushCommand
 import com.zzekak.domain.user.UserId
 import com.zzekak.domain.user.dao.UserEntityDao
 import com.zzekak.domain.user.entity.UserEntity
+import org.springframework.stereotype.Repository
+import org.springframework.transaction.annotation.Transactional
+import java.time.Duration
+import java.time.Instant
+import java.time.ZoneId
+import java.time.ZonedDateTime
+import kotlin.reflect.KClass
 
 @Repository
 internal class AppointmentRepositoryImpl(
