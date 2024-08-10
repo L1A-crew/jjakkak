@@ -25,7 +25,7 @@ internal data class GetUserResponse(
                     agreement = AgreementContent.from(agreement),
                     createdAt = createdAt,
                     updatedAt = updatedAt,
-                    fcmKey = fcmKey
+                    fcmKey = fcmKey,
                 )
             }
     }
