@@ -39,6 +39,14 @@ internal class UserCommandRepositoryImpl(
         return uploadedUrl
     }
 
+    override fun updateFcmKey(
+        userId: UserId,
+        fcmKeyValue: String
+    ): UserCommand {
+        val updated = userEntityDao.getUserById(userId).apply { fcmKey = fcmKeyValue }
+        return userEntityDao.save(updated).toDomain()
+    }
+
     companion object {
         const val PATH_USER_PROFILE = "user/profile"
     }

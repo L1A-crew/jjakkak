@@ -27,5 +27,6 @@ data class UserQuery(
     val agreement: Agreement,
     val createdAt: Instant,
     val updatedAt: Instant,
-    val isRemoved: Boolean
+    val isRemoved: Boolean,
+    val fcmKey: String
 )

@@ -13,6 +13,7 @@ internal data class GetUserResponse(
     val agreement: AgreementContent,
     val createdAt: Instant,
     val updatedAt: Instant,
+    val fcmKey: String,
 ) {
     companion object {
         fun from(src: UserQuery) =
@@ -24,6 +25,7 @@ internal data class GetUserResponse(
                     agreement = AgreementContent.from(agreement),
                     createdAt = createdAt,
                     updatedAt = updatedAt,
+                    fcmKey = fcmKey
                 )
             }
     }
