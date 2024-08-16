@@ -12,7 +12,6 @@ import org.springframework.web.bind.annotation.RestController
  */
 @RestController()
 internal class DocController {
-
     @GetMapping("${ApiUrl.DOC}/exception")
     @Operation(summary = "Error Code 조회", description = "enum클래스에 정의된 에러 항목들을 보여준다.")
     fun viewException(): List<Map<String, Any>> =
@@ -24,6 +23,7 @@ internal class DocController {
                 "message" to code.message,
             )
         }
+
     @GetMapping("${ApiUrl.DOC}/missionStep")
     @Operation(summary = "Mission Code 조회", description = "enum클래스에 정의된 에러 항목들을 보여준다.")
     fun viewMissionCode(): List<Map<String, Any>> =
@@ -35,5 +35,4 @@ internal class DocController {
                 "description" to code.description,
             )
         }
-
 }

@@ -19,10 +19,9 @@ enum class ExceptionEnumDto(
     // mission 관련 Error => M-..
     MISSION_PHASE_CODE_NOT_EXIST("M-001", HttpStatus.INTERNAL_SERVER_ERROR, "확인되지 않는 미션 ID입니다.")
 
-
     ;
-    fun toDomain():
-        ExceptionEnum =
+
+    fun toDomain(): ExceptionEnum =
         when (this) {
             ILLEGAL_TOKEN -> ExceptionEnum.ILLEGAL_TOKEN
             NO_EXIST_USER -> ExceptionEnum.NO_EXIST_USER

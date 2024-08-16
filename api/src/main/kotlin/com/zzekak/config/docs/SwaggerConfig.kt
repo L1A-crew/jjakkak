@@ -49,7 +49,7 @@ class SwaggerConfig {
             .build()
 
     @Bean
-    fun EnumDocAPI(): GroupedOpenApi =
+    fun enumDocAPI(): GroupedOpenApi =
         GroupedOpenApi.builder()
             .group("Doc")
             .pathsToMatch("${ApiUrl.DOC}/**")
