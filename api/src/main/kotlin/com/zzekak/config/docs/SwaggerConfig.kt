@@ -49,10 +49,10 @@ class SwaggerConfig {
             .build()
 
     @Bean
-    fun exceptionEnum(): GroupedOpenApi =
+    fun EnumDocAPI(): GroupedOpenApi =
         GroupedOpenApi.builder()
-            .group("Exception")
-            .pathsToMatch("${ApiUrl.EXCEPTION}/**")
+            .group("Doc")
+            .pathsToMatch("${ApiUrl.DOC}/**")
             .addOpenApiCustomizer(openApiCustomizer())
             .build()
 

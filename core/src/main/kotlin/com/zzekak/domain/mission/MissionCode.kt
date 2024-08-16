@@ -11,8 +11,9 @@ enum class MissionCode(
     val description: String,
 ) {
     // mission - 미션의 개수가 늘어나도 MISSION_STEP prefix만 지키면 자동으로 미션목록에 추가됨.
-    MISSION_STEP_ONE("M1", "1단계 미션"),
-    MISSION_STEP_TWO("M2", "2단계 미션"),
+    MISSION_STEP_1("M1", "1단계 인증요쳥(출발인증)"),
+    MISSION_STEP_2("M2", "2단계 인증요쳥(중간 인증)"),
+    MISSION_STEP_3("M3", "3단계 인증요청(도착 인증)"),
     ;
 
     companion object {

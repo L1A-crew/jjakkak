@@ -14,12 +14,19 @@ enum class ExceptionEnumDto(
     NO_EXIST_USER("U-002", HttpStatus.BAD_REQUEST, "존재하지 않는 사용자 입니다."),
 
     // server관련 Erorr => S-...
-    SERVER_ERROR("S-001", HttpStatus.INTERNAL_SERVER_ERROR, "처리 중 오류가 발생했습니다.");
+    SERVER_ERROR("S-001", HttpStatus.INTERNAL_SERVER_ERROR, "처리 중 오류가 발생했습니다."),
 
-    fun toDomain(): ExceptionEnum =
+    // mission 관련 Error => M-..
+    MISSION_PHASE_CODE_NOT_EXIST("M-001", HttpStatus.INTERNAL_SERVER_ERROR, "확인되지 않는 미션 ID입니다.")
+
+
+    ;
+    fun toDomain():
+        ExceptionEnum =
         when (this) {
             ILLEGAL_TOKEN -> ExceptionEnum.ILLEGAL_TOKEN
             NO_EXIST_USER -> ExceptionEnum.NO_EXIST_USER
             SERVER_ERROR -> ExceptionEnum.SERVER_ERROR
+            MISSION_PHASE_CODE_NOT_EXIST -> ExceptionEnum.MISSION_PHASE_CODE_NOT_EXIST
         }
 }

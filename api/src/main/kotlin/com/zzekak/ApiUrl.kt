@@ -35,5 +35,5 @@ object ApiUrl {
     const val UPDATE_MISSION = "$MISSION/update"
 
     // Exception
-    const val EXCEPTION = "/exception"
+    const val DOC = "/doc"
 }
