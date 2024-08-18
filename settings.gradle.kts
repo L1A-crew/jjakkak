@@ -5,3 +5,4 @@ rootProject.name = "Zzekak"
 include("core")
 include("infra")
 include("api")
+include("batch")

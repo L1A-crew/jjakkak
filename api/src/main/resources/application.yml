@@ -47,3 +47,6 @@ springdoc:
     path: /docs/index.html
 server:
   port: ${ZZEKAK_PORT}
+
+firebase:
+  path: ${ZZEKAK_FIREBASE_KEY_PATH}

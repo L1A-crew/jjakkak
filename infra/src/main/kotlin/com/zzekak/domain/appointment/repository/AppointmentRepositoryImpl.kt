@@ -122,8 +122,9 @@ internal class AppointmentRepositoryImpl(
             val pushCmd =
                 AppointmentPushCommand(
                     appointmentTime = arrivalTime.toInstant(),
-                    departureTime = departure.minus(Duration.ofMinutes(5)).toInstant(),
+                    departureTime = departure.minus(Duration.ofMinutes(3)).toInstant(),
                     createAt = Instant.now(),
+                    arrivalTime = arrivalTime.toInstant(),
                 )
             val pushEntity =
                 pushCmd.toEntity(
@@ -137,8 +138,16 @@ internal class AppointmentRepositoryImpl(
                     val value =
                         when (it.code) {
                             PushTypeCode.PUSH_TYPE_DEPARTURE_TIME.code -> pushCmd.departureTime.toString()
-                            PushTypeCode.PUSH_TYPE_ARRIVAL_TIME.code -> pushCmd.appointmentTime.toString()
-                            PushTypeCode.PUSH_TYPE_RADIUS_2KM.code -> "N"
+                            PushTypeCode.PUSH_TYPE_ARRIVAL_TIME.code ->
+                                getArrivalPushTime(
+                                    pushCmd.departureTime,
+                                    pushCmd.arrivalTime,
+                                ).toString()
+                            PushTypeCode.PUSH_TYPE_MIDL_TIME.code ->
+                                getMidTime(
+                                    pushCmd.departureTime,
+                                    pushCmd.arrivalTime,
+                                ).toString()
                             else -> ""
                         }
                     val pushDataEntity =
@@ -150,6 +159,24 @@ internal class AppointmentRepositoryImpl(
                 }
             }
         }
+    }
+
+    private fun getMidTime(
+        dTime: Instant,
+        aTime: Instant
+    ): Instant {
+        val duration = Duration.between(dTime, aTime)
+        val halfTime = duration.dividedBy(2)
+        return dTime.plus(halfTime)
+    }
+
+    private fun getArrivalPushTime(
+        dTime: Instant,
+        aTime: Instant
+    ): Instant {
+        val duration = Duration.between(dTime, aTime)
+        val ninetyFivePercentDuration = duration.multipliedBy(95).dividedBy(100)
+        return dTime.plus(ninetyFivePercentDuration)
     }
 
     @Transactional
@@ -308,7 +335,6 @@ internal class AppointmentRepositoryImpl(
         value: String,
     ) = AppointmentPushDataEntity(
         appointmentPushId = this,
-        pushValue = null,
         pushDataValue = value,
         sendAt = false,
         id =

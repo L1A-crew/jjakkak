@@ -8,6 +8,7 @@ dependencies {
     // core 의존성 추가
     implementation(project(":core"))
     implementation(project(":infra"))
+    implementation(project(":batch"))
 
     implementation("org.springframework.boot:spring-boot-starter-security:3.2.5")
 
